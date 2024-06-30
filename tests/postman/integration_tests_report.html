@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Integration Tests Report</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #121212;
+      color: #ffffff;
+      padding: 0;
+      margin: 0;
+    }
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+    }
+    .summary, .charts, .details {
+      margin-top: 20px;
+    }
+    .card {
+      background-color: #1e1e1e;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+      flex: 1;
+      margin: 10px;
+    }
+    .card h2 {
+      margin: 0 0 10px;
+      font-size: 20px;
+    }
+    .card p {
+      margin: 0;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .chart-container {
+      position: relative;
+      margin: 20px 0;
+      height: 400px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    table, th, td {
+      border: 1px solid #444;
+    }
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background-color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="summary">
+      <div class="card">
+        <h2>Total Requisições</h2>
+        <p id="total-requests"></p>
+      </div>
+      <div class="card">
+        <h2>Sucesso</h2>
+        <p id="total-success"></p>
+      </div>
+      <div class="card">
+        <h2>Falhas</h2>
+        <p id="total-failures"></p>
+      </div>
+    </div>
+    <div class="charts">
+      <div class="chart-container">
+        <canvas id="responseTimeGauge"></canvas>
+      </div>
+      <div class="chart-container">
+        <canvas id="requestStatusChart"></canvas>
+      </div>
+      <div class="chart-container">
+        <canvas id="testResultsChart"></canvas>
+      </div>
+    </div>
+    <div class="details">
+      <h2>Detalhamento por Endpoint</h2>
+      <div class="chart-container">
+        <canvas id="endpointPerformanceChart"></canvas>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Endpoint</th>
+            <th>Total Requisições</th>
+            <th>Tempo Médio de Resposta (ms)</th>
+            <th>Taxa de Sucesso (%)</th>
+          </tr>
+        </thead>
+        <tbody id="endpointDetailsTable">
+        </tbody>
+      </table>
+      <h2>Dados de Transferência</h2>
+      <div class="chart-container">
+        <canvas id="dataTransferChart"></canvas>
+      </div>
+      <h2>Logs e Erros</h2>
+      <div class="chart-container">
+        <canvas id="logsPieChart"></canvas>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Tipo</th>
+            <th>Mensagem</th>
+          </tr>
+        </thead>
+        <tbody id="logsTable">
+        </tbody>
+      </table>
+      <h2>Análise de Tempo</h2>
+      <div class="chart-container">
+        <canvas id="timeAnalysisBoxPlot"></canvas>
+      </div>
+      <div class="chart-container">
+        <canvas id="timeAnalysisScatterPlot"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Carregar dados do JSON
+    fetch('/cc-iac-policies-api/tests/postman/report-json.json')
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+
+        // Processar dados
+        const totalRequests = data.run.stats.requests.total;
+        const totalSuccess = totalRequests - data.run.stats.requests.failed;
+        const totalFailures = data.run.stats.requests.failed;
+
+        document.getElementById('total-requests').innerText = totalRequests;
+        document.getElementById('total-success').innerText = totalSuccess;
+        document.getElementById('total-failures').innerText = totalFailures;
+
+        const responseTimes = data.run.timings.responseTimes;
+        const avgResponseTime = responseTimes.reduce((a, b) => a + b, 0) / responseTimes.length;
+
+        // Configurar gráficos
+        const ctxGauge = document.getElementById('responseTimeGauge').getContext('2d');
+        const responseTimeGauge = new Chart(ctxGauge, {
+          type: 'doughnut',
+          data: {
+            datasets: [{
+              data: [avgResponseTime, 1000 - avgResponseTime],
+              backgroundColor: ['#4caf50', '#e0e0e0'],
+              borderWidth: 0
+            }]
+          },
+          options: {
+            circumference: Math.PI,
+            rotation: Math.PI,
+            cutout: '50%',
+            plugins: {
+              tooltip: { enabled: false },
+              legend: { display: false }
+            }
+          }
+        });
+
+        const ctxStatus = document.getElementById('requestStatusChart').getContext('2d');
+        const requestStatusChart = new Chart(ctxStatus, {
+          type: 'bar',
+          data: {
+            labels: ['2xx', '4xx', '5xx'],
+            datasets: [{
+              label: 'Status das Requisições',
+              data: [data.run.stats.requests.total2xx, data.run.stats.requests.total4xx, data.run.stats.requests.total5xx],
+              backgroundColor: ['#4caf50', '#ff9800', '#f44336']
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+
+        const ctxTests = document.getElementById('testResultsChart').getContext('2d');
+        const testResultsChart = new Chart(ctxTests, {
+          type: 'bar',
+          data: {
+            labels: ['Sucesso', 'Falhas'],
+            datasets: [{
+              label: 'Resultados dos Testes',
+              data: [data.run.stats.tests.total - data.run.stats.tests.failed, data.run.stats.tests.failed],
+              backgroundColor: ['#4caf50', '#f44336']
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+
+        // Detalhamento por Endpoint
+        const endpointDetails = data.run.executions.reduce((acc, exec) => {
+          const endpoint = exec.item.name;
+          if (!acc[endpoint]) {
+            acc[endpoint] = { totalRequests: 0, totalTime: 0, successCount: 0 };
+          }
+          acc[endpoint].totalRequests++;
+          acc[endpoint].totalTime += exec.response.responseTime;
+          if (exec.response.code >= 200 && exec.response.code < 300) {
+            acc[endpoint].successCount++;
+          }
+          return acc;
+        }, {});
+
+        const endpointTable = document.getElementById('endpointDetailsTable');
+        Object.keys(endpointDetails).forEach(endpoint => {
+          const details = endpointDetails[endpoint];
+          const avgTime = details.totalTime / details.totalRequests;
+          const successRate = (details.successCount / details.totalRequests) * 100;
+
+          const row = document.createElement('tr');
+          row.innerHTML = `<td>${endpoint}</td><td>${details.totalRequests}</td><td>${avgTime.toFixed(2)}</td><td>${successRate.toFixed(2)}</td>`;
+          endpointTable.appendChild(row);
+        });
+
+        const ctxEndpoint = document.getElementById('endpointPerformanceChart').getContext('2d');
+        const endpointPerformanceChart = new Chart(ctxEndpoint, {
+          type: 'bar',
+          data: {
+            labels: Object.keys(endpointDetails),
+            datasets: [{
+              label: 'Tempo Médio de Resposta (ms)',
+              data: Object.keys(endpointDetails).map(endpoint => endpointDetails[endpoint].totalTime / endpointDetails[endpoint].totalRequests),
+              backgroundColor: '#4caf50'
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+
+        // Dados de Transferência
+        const totalDataSent = data.run.transfers.total.dataSent;
+        const totalDataReceived = data.run.transfers.total.dataReceived;
+        const ctxDataTransfer = document.getElementById('dataTransferChart').getContext('2d');
+        const dataTransferChart = new Chart(ctxDataTransfer, {
+          type: 'line',
+          data: {
+            labels: ['Data Sent', 'Data Received'],
+            datasets: [{
+              label: 'Dados Transferidos (bytes)',
+              data: [totalDataSent, totalDataReceived],
+              backgroundColor: ['#4caf50', '#2196f3'],
+              borderColor: ['#4caf50', '#2196f3'],
+              fill: false
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+
+        // Logs e Erros
+        const logsTable = document.getElementById('logsTable');
+        const logsPieData = { totalErrors: 0, totalLogs: 0 };
+        data.run.executions.forEach(exec => {
+          exec.assertions.forEach(assertion => {
+            if (!assertion.passed) {
+              const row = document.createElement('tr');
+              row.innerHTML = `<td>${assertion.error.name}</td><td>${assertion.error.message}</td>`;
+              logsTable.appendChild(row);
+              logsPieData.totalErrors++;
+            }
+          });
+          logsPieData.totalLogs++;
+        });
+
+        const ctxLogsPie = document.getElementById('logsPieChart').getContext('2d');
+        const logsPieChart = new Chart(ctxLogsPie, {
+          type: 'pie',
+          data: {
+            labels: ['Errors', 'Logs'],
+            datasets: [{
+              data: [logsPieData.totalErrors, logsPieData.totalLogs],
+              backgroundColor: ['#f44336', '#4caf50']
+            }]
+          }
+        });
+
+        // Análise de Tempo
+        const responseTimesBoxPlot = data.run.executions.map(exec => exec.response.responseTime);
+        const ctxTimeBoxPlot = document.getElementById('timeAnalysisBoxPlot').getContext('2d');
+        const timeAnalysisBoxPlot = new Chart(ctxTimeBoxPlot, {
+          type: 'boxplot',
+          data: {
+            labels: ['Response Times'],
+            datasets: [{
+              label: 'Response Times (ms)',
+              data: responseTimesBoxPlot,
+              backgroundColor: '#4caf50'
+            }]
+          }
+        });
+
+        const ctxTimeScatterPlot = document.getElementById('timeAnalysisScatterPlot').getContext('2d');
+        const timeAnalysisScatterPlot = new Chart(ctxTimeScatterPlot, {
+          type: 'scatter',
+          data: {
+            datasets: [{
+              label: 'Response Times (ms)',
+              data: responseTimesBoxPlot.map((value, index) => ({ x: index, y: value })),
+              backgroundColor: '#4caf50'
+            }]
+          },
+          options: {
+            scales: {
+              x: {
+                type: 'linear',
+                position: 'bottom'
+              }
+            }
+          }
+        });
+      })
+      .catch(error => console.error('Erro ao carregar dados:', error));
+  </script>
+</body>
+</html>

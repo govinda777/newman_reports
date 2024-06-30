@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Swagger Petstore" tests="20" time="0.196">
+  <testsuite name="pet / {petId} / uploadImage / uploads an image" id="499158d7-b4cc-431b-910b-160b42e5885a" timestamp="2024-06-30T00:16:13.065Z" tests="3" failures="0" errors="0" time="0.048">
+    <testcase name="Response status code is 404" time="0.048" classname="SwaggerPetstore"/>
+    <testcase name="Response time is acceptable" time="0.048" classname="SwaggerPetstore"/>
+    <testcase name="Response has JSON content-type" time="0.048" classname="SwaggerPetstore"/>
+  </testsuite>
+  <testsuite name="pet / {petId} / Find pet by ID" id="c402ba88-20c1-48a0-a63b-30b38cf2e182" timestamp="2024-06-30T00:16:13.065Z" tests="3" failures="0" errors="0" time="0.010">
+    <testcase name="Response status code is 404" time="0.010" classname="SwaggerPetstore"/>
+    <testcase name="Response time is acceptable" time="0.010" classname="SwaggerPetstore"/>
+    <testcase name="Response has JSON content-type" time="0.010" classname="SwaggerPetstore"/>
+  </testsuite>
+  <testsuite name="pet / {petId} / Updates a pet in the store with form data" id="899c4446-8335-4090-bad1-aff6091df17a" timestamp="2024-06-30T00:16:13.065Z" tests="3" failures="0" errors="0" time="0.008">
+    <testcase name="Response status code is 404" time="0.008" classname="SwaggerPetstore"/>
+    <testcase name="Response time is acceptable" time="0.008" classname="SwaggerPetstore"/>
+    <testcase name="Response has JSON content-type" time="0.008" classname="SwaggerPetstore"/>
+  </testsuite>
+  <testsuite name="pet / {petId} / Deletes a pet" id="8a7f86cb-a5ad-4077-98e5-f414608c166a" timestamp="2024-06-30T00:16:13.065Z" tests="3" failures="0" errors="0" time="0.011">
+    <testcase name="Response status code is 404" time="0.011" classname="SwaggerPetstore"/>
+    <testcase name="Response time is acceptable" time="0.011" classname="SwaggerPetstore"/>
+    <testcase name="Response has JSON content-type" time="0.011" classname="SwaggerPetstore"/>
+  </testsuite>
+  <testsuite name="pet / Add a new pet to the store" id="c7c5069e-5bb3-4dc3-bea0-49c93ee85ab4" timestamp="2024-06-30T00:16:13.065Z" tests="3" failures="0" errors="0" time="0.007">
+    <testcase name="Response status code is 404" time="0.007" classname="SwaggerPetstore"/>
+    <testcase name="Response time is acceptable" time="0.007" classname="SwaggerPetstore"/>
+    <testcase name="Response has JSON content-type" time="0.007" classname="SwaggerPetstore"/>
+  </testsuite>
+  <testsuite name="pet / Update an existing pet" id="fdb01201-bc29-48d7-8df4-2e94e3e18e01" timestamp="2024-06-30T00:16:13.065Z" tests="3" failures="0" errors="0" time="0.008">
+    <testcase name="Response status code is 404" time="0.008" classname="SwaggerPetstore"/>
+    <testcase name="Response time is acceptable" time="0.008" classname="SwaggerPetstore"/>
+    <testcase name="Response has JSON content-type" time="0.008" classname="SwaggerPetstore"/>
+  </testsuite>
+  <testsuite name="pet / findByStatus / Finds Pets by status" id="bb880381-fba0-4410-a8a1-1823459006b6" timestamp="2024-06-30T00:16:13.065Z" tests="3" failures="0" errors="0" time="0.009">
+    <testcase name="Response status code is 404" time="0.009" classname="SwaggerPetstore"/>
+    <testcase name="Response time is acceptable" time="0.009" classname="SwaggerPetstore"/>
+    <testcase name="Response has JSON content-type" time="0.009" classname="SwaggerPetstore"/>
+  </testsuite>
+  <testsuite name="pet / findByTags / Finds Pets by tags" id="971b051b-5f11-4865-bfdb-930759321303" timestamp="2024-06-30T00:16:13.065Z" tests="3" failures="0" errors="0" time="0.009">
+    <testcase name="Response status code is 404" time="0.009" classname="SwaggerPetstore"/>
+    <testcase name="Response time is acceptable" time="0.009" classname="SwaggerPetstore"/>
+    <testcase name="Response has JSON content-type" time="0.009" classname="SwaggerPetstore"/>
+  </testsuite>
+  <testsuite name="store / inventory / Returns pet inventories by status" id="47bd9e7e-96b5-45b3-98e7-5b3fbcea36b5" timestamp="2024-06-30T00:16:13.065Z" tests="3" failures="0" errors="0" time="0.017">
+    <testcase name="Response status code is 404" time="0.017" classname="SwaggerPetstore"/>
+    <testcase name="Response time is acceptable" time="0.017" classname="SwaggerPetstore"/>
+    <testcase name="Response has JSON content-type" time="0.017" classname="SwaggerPetstore"/>
+  </testsuite>
+  <testsuite name="store / order / Place an order for a pet" id="37596f31-461f-4513-b68c-f115d589cced" timestamp="2024-06-30T00:16:13.065Z" tests="3" failures="0" errors="0" time="0.007">
+    <testcase name="Response status code is 404" time="0.007" classname="SwaggerPetstore"/>
+    <testcase name="Response time is acceptable" time="0.007" classname="SwaggerPetstore"/>
+    <testcase name="Response has JSON content-type" time="0.007" classname="SwaggerPetstore"/>
+  </testsuite>
+  <testsuite name="store / order / {orderId} / Find purchase order by ID" id="264a1935-7360-4f26-8f41-142b6938ff4d" timestamp="2024-06-30T00:16:13.065Z" tests="3" failures="0" errors="0" time="0.006">
+    <testcase name="Response status code is 404" time="0.006" classname="SwaggerPetstore"/>
+    <testcase name="Response time is acceptable" time="0.006" classname="SwaggerPetstore"/>
+    <testcase name="Response has JSON content-type" time="0.006" classname="SwaggerPetstore"/>
+  </testsuite>
+  <testsuite name="store / order / {orderId} / Delete purchase order by ID" id="d51afefc-5362-4d9e-bef5-a3675f73ad79" timestamp="2024-06-30T00:16:13.065Z" tests="3" failures="0" errors="0" time="0.006">
+    <testcase name="Response status code is 404" time="0.006" classname="SwaggerPetstore"/>
+    <testcase name="Response time is acceptable" time="0.006" classname="SwaggerPetstore"/>
+    <testcase name="Response has JSON content-type" time="0.006" classname="SwaggerPetstore"/>
+  </testsuite>
+  <testsuite name="user / createWithList / Creates list of users with given input array" id="77892cc2-9750-44df-96b2-55f6ef8fcccc" timestamp="2024-06-30T00:16:13.065Z" tests="3" failures="0" errors="0" time="0.008">
+    <testcase name="Response status code is 404" time="0.008" classname="SwaggerPetstore"/>
+    <testcase name="Response time is acceptable" time="0.008" classname="SwaggerPetstore"/>
+    <testcase name="Response has JSON content-type" time="0.008" classname="SwaggerPetstore"/>
+  </testsuite>
+  <testsuite name="user / {username} / Get user by user name" id="d02c9e39-286d-45d0-b76b-b85db66858c0" timestamp="2024-06-30T00:16:13.065Z" tests="3" failures="0" errors="0" time="0.009">
+    <testcase name="Response status code is 404" time="0.009" classname="SwaggerPetstore"/>
+    <testcase name="Response time is acceptable" time="0.009" classname="SwaggerPetstore"/>
+    <testcase name="Response has JSON content-type" time="0.009" classname="SwaggerPetstore"/>
+  </testsuite>
+  <testsuite name="user / {username} / Updated user" id="3c9df624-e6df-4ccd-8e74-b930a7b33b01" timestamp="2024-06-30T00:16:13.065Z" tests="3" failures="0" errors="0" time="0.009">
+    <testcase name="Response status code is 404" time="0.009" classname="SwaggerPetstore"/>
+    <testcase name="Response time is acceptable" time="0.009" classname="SwaggerPetstore"/>
+    <testcase name="Response has JSON content-type" time="0.009" classname="SwaggerPetstore"/>
+  </testsuite>
+  <testsuite name="user / {username} / Delete user" id="cd1ce29e-6f1b-4906-8347-d598f4100c9e" timestamp="2024-06-30T00:16:13.065Z" tests="3" failures="0" errors="0" time="0.004">
+    <testcase name="Response status code is 404" time="0.004" classname="SwaggerPetstore"/>
+    <testcase name="Response time is acceptable" time="0.004" classname="SwaggerPetstore"/>
+    <testcase name="Response has JSON content-type" time="0.004" classname="SwaggerPetstore"/>
+  </testsuite>
+  <testsuite name="user / login / Logs user into the system" id="8259602a-5e89-413d-8feb-3bd0bdfd71fb" timestamp="2024-06-30T00:16:13.065Z" tests="3" failures="0" errors="0" time="0.006">
+    <testcase name="Response status code is 404" time="0.006" classname="SwaggerPetstore"/>
+    <testcase name="Response time is acceptable" time="0.006" classname="SwaggerPetstore"/>
+    <testcase name="Response has JSON content-type" time="0.006" classname="SwaggerPetstore"/>
+  </testsuite>
+  <testsuite name="user / logout / Logs out current logged in user session" id="6ff95b33-968c-4e2f-901e-d8f2f052d40a" timestamp="2024-06-30T00:16:13.065Z" tests="3" failures="0" errors="0" time="0.004">
+    <testcase name="Response status code is 404" time="0.004" classname="SwaggerPetstore"/>
+    <testcase name="Response time is acceptable" time="0.004" classname="SwaggerPetstore"/>
+    <testcase name="Response has JSON content-type" time="0.004" classname="SwaggerPetstore"/>
+  </testsuite>
+  <testsuite name="user / createWithArray / Creates list of users with given input array" id="5546190c-f332-4839-82c5-089ec3db3ab8" timestamp="2024-06-30T00:16:13.065Z" tests="3" failures="0" errors="0" time="0.005">
+    <testcase name="Response status code is 404" time="0.005" classname="SwaggerPetstore"/>
+    <testcase name="Response time is acceptable" time="0.005" classname="SwaggerPetstore"/>
+    <testcase name="Response has JSON content-type" time="0.005" classname="SwaggerPetstore"/>
+  </testsuite>
+  <testsuite name="user / Create user" id="6955d0b7-749c-41c3-afdc-5d71d5ae4b47" timestamp="2024-06-30T00:16:13.065Z" tests="3" failures="0" errors="0" time="0.005">
+    <testcase name="Response status code is 404" time="0.005" classname="SwaggerPetstore"/>
+    <testcase name="Response time is acceptable" time="0.005" classname="SwaggerPetstore"/>
+    <testcase name="Response has JSON content-type" time="0.005" classname="SwaggerPetstore"/>
+  </testsuite>
+</testsuites>

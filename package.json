@@ -1,0 +1,28 @@
+{
+  "name": "cc-iac-policies-api",
+  "version": "1.0.0",
+  "description": "![technology Python](https://img.shields.io/badge/technology-python-blue.svg)",
+  "main": "test_report/index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com-emu:melisource/fury_cc-iac-policies-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "newman": "^4.6.1",
+    "newman-reporter-html": "^1.0.5",
+    "openapi-to-postmanv2": "^4.21.0"
+  },
+  "dependencies": {
+    "newman-reporter-htmlextra": "^1.23.1"
+  }
+}

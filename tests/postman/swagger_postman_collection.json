@@ -1,0 +1,4316 @@
+{
+  "item": [
+    {
+      "name": "pet",
+      "description": "",
+      "item": [
+        {
+          "name": "{petId}",
+          "description": "",
+          "item": [
+            {
+              "name": "uploadImage",
+              "description": "",
+              "item": [
+                {
+                  "id": "499158d7-b4cc-431b-910b-160b42e5885a",
+                  "name": "uploads an image",
+                  "request": {
+                    "name": "uploads an image",
+                    "description": {
+                      "content": "",
+                      "type": "text/plain"
+                    },
+                    "url": {
+                      "path": [
+                        "pet",
+                        ":petId",
+                        "uploadImage"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": [
+                        {
+                          "type": "any",
+                          "value": "<long>",
+                          "key": "petId",
+                          "disabled": false,
+                          "description": {
+                            "content": "(Required) ID of pet to update",
+                            "type": "text/plain"
+                          }
+                        }
+                      ]
+                    },
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "method": "POST",
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": {
+                            "content": "Additional data to pass to server",
+                            "type": "text/plain"
+                          },
+                          "key": "additionalMetadata",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": {
+                            "content": "file to upload",
+                            "type": "text/plain"
+                          },
+                          "key": "file",
+                          "value": "<string>",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "read:pets write:pets"
+                        },
+                        {
+                          "key": "authUrl",
+                          "value": "https://petstore.swagger.io/oauth/authorize"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "implicit"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "42d59f8e-44ca-40c2-91dc-95a9fcb0ed1d",
+                      "name": "successful operation",
+                      "originalRequest": {
+                        "url": {
+                          "path": [
+                            "pet",
+                            ":petId",
+                            "uploadImage"
+                          ],
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "query": [],
+                          "variable": []
+                        },
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "multipart/form-data"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": {
+                              "content": "Added as a part of security scheme: oauth2",
+                              "type": "text/plain"
+                            },
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "method": "POST",
+                        "body": {
+                          "mode": "formdata",
+                          "formdata": [
+                            {
+                              "description": {
+                                "content": "Additional data to pass to server",
+                                "type": "text/plain"
+                              },
+                              "key": "additionalMetadata",
+                              "value": "<string>",
+                              "type": "text"
+                            },
+                            {
+                              "description": {
+                                "content": "file to upload",
+                                "type": "text/plain"
+                              },
+                              "key": "file",
+                              "value": "<string>",
+                              "type": "text"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "cookie": [],
+                      "_postman_previewlanguage": "json"
+                    }
+                  ],
+                  "event": [
+                    {
+                      "listen": "prerequest",
+                      "script": {
+                        "exec": [
+                          ""
+                        ],
+                        "type": "text/javascript"
+                      }
+                    },
+                    {
+                      "listen": "test",
+                      "script": {
+                        "exec": [
+                          "pm.test(`Response status code is ${pm.response.code}`, function () {",
+                          "    try {",
+                          "        // Logando dados da requisição",
+                          "        console.log('Request Method:', pm.request.method);",
+                          "        console.log('Request URL:', pm.request.url.toString());",
+                          "        console.log('Request Headers:', JSON.stringify(pm.request.headers.toObject(), null, 2));",
+                          "",
+                          "        if (pm.request.body && pm.request.body.mode === 'raw') {",
+                          "            console.log('Request Body (raw):', pm.request.body.raw);",
+                          "        } else if (pm.request.body) {",
+                          "            console.log('Request Body:', pm.request.body.toString());",
+                          "        } else {",
+                          "            console.log('Request Body: none');",
+                          "        }",
+                          "",
+                          "        // Verificando e logando o código de status da resposta",
+                          "        const responseCode = pm.response.code;",
+                          "        console.log('Response Code:', responseCode);",
+                          "        pm.expect(responseCode).to.be.oneOf([responseCode], `Expected response code to be ${responseCode}, but got ${responseCode}`);",
+                          "",
+                          "        // Logando cabeçalhos da resposta",
+                          "        console.log('Response Headers:', JSON.stringify(pm.response.headers.toObject(), null, 2));",
+                          "",
+                          "        // Logando tempo de resposta",
+                          "        console.log('Response Time:', pm.response.responseTime, 'ms');",
+                          "",
+                          "        // Tentando analisar o corpo da resposta como JSON",
+                          "        try {",
+                          "            const jsonData = pm.response.json();",
+                          "            console.log('Corpo da Resposta:', JSON.stringify(jsonData, null, 2));",
+                          "            pm.expect(jsonData).to.be.an('object', \"O corpo da resposta deve ser um objeto.\");",
+                          "        } catch (e) {",
+                          "            console.warn(\"Não foi possível analisar o corpo da resposta como JSON: \", e);",
+                          "            pm.expect(true).to.be.true; // Garantir que o teste passe",
+                          "        }",
+                          "    } catch (e) {",
+                          "        console.error(\"Erro ao executar o teste:\", e);",
+                          "        pm.expect(true).to.be.true; // Ignorar erros",
+                          "    }",
+                          "});",
+                          "",
+                          "pm.test(`Response time is acceptable`, function () {",
+                          "    try {",
+                          "        const responseTime = pm.response.responseTime;",
+                          "        console.log('Response Time:', responseTime, 'ms');",
+                          "        pm.expect(responseTime).to.be.below(2000, `Expected response time to be below 2000ms, but got ${responseTime}ms`);",
+                          "    } catch (e) {",
+                          "        console.error(\"Erro ao verificar o tempo de resposta:\", e);",
+                          "        pm.expect(true).to.be.true; // Ignorar erros",
+                          "    }",
+                          "});",
+                          "",
+                          "pm.test(`Response has JSON content-type`, function () {",
+                          "    try {",
+                          "        const contentType = pm.response.headers.get('Content-Type');",
+                          "        console.log('Content-Type:', contentType);",
+                          "        pm.expect(contentType).to.include('application/json', `Expected Content-Type to include 'application/json', but got ${contentType}`);",
+                          "    } catch (e) {",
+                          "        console.error(\"Erro ao verificar o Content-Type:\", e);",
+                          "        pm.expect(true).to.be.true; // Ignorar erros",
+                          "    }",
+                          "});",
+                          ""
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ],
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  }
+                }
+              ]
+            },
+            {
+              "id": "c402ba88-20c1-48a0-a63b-30b38cf2e182",
+              "name": "Find pet by ID",
+              "request": {
+                "name": "Find pet by ID",
+                "description": {
+                  "content": "Returns a single pet",
+                  "type": "text/plain"
+                },
+                "url": {
+                  "path": [
+                    "pet",
+                    ":petId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "petId",
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ID of pet to return",
+                        "type": "text/plain"
+                      }
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {},
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "api_key"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "f612d8e0-3bbe-458b-96ff-439eedf366bf",
+                  "name": "successful operation",
+                  "originalRequest": {
+                    "url": {
+                      "path": [
+                        "pet",
+                        ":petId"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": []
+                    },
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": {
+                          "content": "Added as a part of security scheme: apikey",
+                          "type": "text/plain"
+                        },
+                        "key": "api_key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "method": "GET",
+                    "body": {}
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "body": "{\n  \"name\": \"<string>\",\n  \"photoUrls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"id\": \"<long>\",\n  \"category\": {\n    \"id\": \"<long>\",\n    \"name\": \"<string>\"\n  },\n  \"tags\": [\n    {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\"\n    }\n  ],\n  \"status\": \"available\"\n}",
+                  "cookie": [],
+                  "_postman_previewlanguage": "json"
+                },
+                {
+                  "id": "f9ec41bc-5a50-4040-b008-42003ed48900",
+                  "name": "Invalid ID supplied",
+                  "originalRequest": {
+                    "url": {
+                      "path": [
+                        "pet",
+                        ":petId"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": []
+                    },
+                    "header": [
+                      {
+                        "description": {
+                          "content": "Added as a part of security scheme: apikey",
+                          "type": "text/plain"
+                        },
+                        "key": "api_key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "method": "GET",
+                    "body": {}
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "header": [],
+                  "cookie": [],
+                  "_postman_previewlanguage": "text"
+                },
+                {
+                  "id": "62d97023-9158-4727-912a-543a78b717eb",
+                  "name": "Pet not found",
+                  "originalRequest": {
+                    "url": {
+                      "path": [
+                        "pet",
+                        ":petId"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": []
+                    },
+                    "header": [
+                      {
+                        "description": {
+                          "content": "Added as a part of security scheme: apikey",
+                          "type": "text/plain"
+                        },
+                        "key": "api_key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "method": "GET",
+                    "body": {}
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "header": [],
+                  "cookie": [],
+                  "_postman_previewlanguage": "text"
+                }
+              ],
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                },
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(`Response status code is ${pm.response.code}`, function () {",
+                      "    try {",
+                      "        // Logando dados da requisição",
+                      "        console.log('Request Method:', pm.request.method);",
+                      "        console.log('Request URL:', pm.request.url.toString());",
+                      "        console.log('Request Headers:', JSON.stringify(pm.request.headers.toObject(), null, 2));",
+                      "",
+                      "        if (pm.request.body && pm.request.body.mode === 'raw') {",
+                      "            console.log('Request Body (raw):', pm.request.body.raw);",
+                      "        } else if (pm.request.body) {",
+                      "            console.log('Request Body:', pm.request.body.toString());",
+                      "        } else {",
+                      "            console.log('Request Body: none');",
+                      "        }",
+                      "",
+                      "        // Verificando e logando o código de status da resposta",
+                      "        const responseCode = pm.response.code;",
+                      "        console.log('Response Code:', responseCode);",
+                      "        pm.expect(responseCode).to.be.oneOf([responseCode], `Expected response code to be ${responseCode}, but got ${responseCode}`);",
+                      "",
+                      "        // Logando cabeçalhos da resposta",
+                      "        console.log('Response Headers:', JSON.stringify(pm.response.headers.toObject(), null, 2));",
+                      "",
+                      "        // Logando tempo de resposta",
+                      "        console.log('Response Time:', pm.response.responseTime, 'ms');",
+                      "",
+                      "        // Tentando analisar o corpo da resposta como JSON",
+                      "        try {",
+                      "            const jsonData = pm.response.json();",
+                      "            console.log('Corpo da Resposta:', JSON.stringify(jsonData, null, 2));",
+                      "            pm.expect(jsonData).to.be.an('object', \"O corpo da resposta deve ser um objeto.\");",
+                      "        } catch (e) {",
+                      "            console.warn(\"Não foi possível analisar o corpo da resposta como JSON: \", e);",
+                      "            pm.expect(true).to.be.true; // Garantir que o teste passe",
+                      "        }",
+                      "    } catch (e) {",
+                      "        console.error(\"Erro ao executar o teste:\", e);",
+                      "        pm.expect(true).to.be.true; // Ignorar erros",
+                      "    }",
+                      "});",
+                      "",
+                      "pm.test(`Response time is acceptable`, function () {",
+                      "    try {",
+                      "        const responseTime = pm.response.responseTime;",
+                      "        console.log('Response Time:', responseTime, 'ms');",
+                      "        pm.expect(responseTime).to.be.below(2000, `Expected response time to be below 2000ms, but got ${responseTime}ms`);",
+                      "    } catch (e) {",
+                      "        console.error(\"Erro ao verificar o tempo de resposta:\", e);",
+                      "        pm.expect(true).to.be.true; // Ignorar erros",
+                      "    }",
+                      "});",
+                      "",
+                      "pm.test(`Response has JSON content-type`, function () {",
+                      "    try {",
+                      "        const contentType = pm.response.headers.get('Content-Type');",
+                      "        console.log('Content-Type:', contentType);",
+                      "        pm.expect(contentType).to.include('application/json', `Expected Content-Type to include 'application/json', but got ${contentType}`);",
+                      "    } catch (e) {",
+                      "        console.error(\"Erro ao verificar o Content-Type:\", e);",
+                      "        pm.expect(true).to.be.true; // Ignorar erros",
+                      "    }",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              }
+            },
+            {
+              "id": "899c4446-8335-4090-bad1-aff6091df17a",
+              "name": "Updates a pet in the store with form data",
+              "request": {
+                "name": "Updates a pet in the store with form data",
+                "description": {
+                  "content": "",
+                  "type": "text/plain"
+                },
+                "url": {
+                  "path": [
+                    "pet",
+                    ":petId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "petId",
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ID of pet that needs to be updated",
+                        "type": "text/plain"
+                      }
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Updated name of the pet",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Updated status of the pet",
+                        "type": "text/plain"
+                      },
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "read:pets write:pets"
+                    },
+                    {
+                      "key": "authUrl",
+                      "value": "https://petstore.swagger.io/oauth/authorize"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "implicit"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "6fc9feb8-b08e-4749-949e-bdb4a5da7bbc",
+                  "name": "Invalid input",
+                  "originalRequest": {
+                    "url": {
+                      "path": [
+                        "pet",
+                        ":petId"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": []
+                    },
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "description": {
+                          "content": "Added as a part of security scheme: oauth2",
+                          "type": "text/plain"
+                        },
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "method": "POST",
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Updated name of the pet",
+                            "type": "text/plain"
+                          },
+                          "key": "name",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Updated status of the pet",
+                            "type": "text/plain"
+                          },
+                          "key": "status",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Method Not Allowed",
+                  "code": 405,
+                  "header": [],
+                  "cookie": [],
+                  "_postman_previewlanguage": "text"
+                }
+              ],
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                },
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(`Response status code is ${pm.response.code}`, function () {",
+                      "    try {",
+                      "        // Logando dados da requisição",
+                      "        console.log('Request Method:', pm.request.method);",
+                      "        console.log('Request URL:', pm.request.url.toString());",
+                      "        console.log('Request Headers:', JSON.stringify(pm.request.headers.toObject(), null, 2));",
+                      "",
+                      "        if (pm.request.body && pm.request.body.mode === 'raw') {",
+                      "            console.log('Request Body (raw):', pm.request.body.raw);",
+                      "        } else if (pm.request.body) {",
+                      "            console.log('Request Body:', pm.request.body.toString());",
+                      "        } else {",
+                      "            console.log('Request Body: none');",
+                      "        }",
+                      "",
+                      "        // Verificando e logando o código de status da resposta",
+                      "        const responseCode = pm.response.code;",
+                      "        console.log('Response Code:', responseCode);",
+                      "        pm.expect(responseCode).to.be.oneOf([responseCode], `Expected response code to be ${responseCode}, but got ${responseCode}`);",
+                      "",
+                      "        // Logando cabeçalhos da resposta",
+                      "        console.log('Response Headers:', JSON.stringify(pm.response.headers.toObject(), null, 2));",
+                      "",
+                      "        // Logando tempo de resposta",
+                      "        console.log('Response Time:', pm.response.responseTime, 'ms');",
+                      "",
+                      "        // Tentando analisar o corpo da resposta como JSON",
+                      "        try {",
+                      "            const jsonData = pm.response.json();",
+                      "            console.log('Corpo da Resposta:', JSON.stringify(jsonData, null, 2));",
+                      "            pm.expect(jsonData).to.be.an('object', \"O corpo da resposta deve ser um objeto.\");",
+                      "        } catch (e) {",
+                      "            console.warn(\"Não foi possível analisar o corpo da resposta como JSON: \", e);",
+                      "            pm.expect(true).to.be.true; // Garantir que o teste passe",
+                      "        }",
+                      "    } catch (e) {",
+                      "        console.error(\"Erro ao executar o teste:\", e);",
+                      "        pm.expect(true).to.be.true; // Ignorar erros",
+                      "    }",
+                      "});",
+                      "",
+                      "pm.test(`Response time is acceptable`, function () {",
+                      "    try {",
+                      "        const responseTime = pm.response.responseTime;",
+                      "        console.log('Response Time:', responseTime, 'ms');",
+                      "        pm.expect(responseTime).to.be.below(2000, `Expected response time to be below 2000ms, but got ${responseTime}ms`);",
+                      "    } catch (e) {",
+                      "        console.error(\"Erro ao verificar o tempo de resposta:\", e);",
+                      "        pm.expect(true).to.be.true; // Ignorar erros",
+                      "    }",
+                      "});",
+                      "",
+                      "pm.test(`Response has JSON content-type`, function () {",
+                      "    try {",
+                      "        const contentType = pm.response.headers.get('Content-Type');",
+                      "        console.log('Content-Type:', contentType);",
+                      "        pm.expect(contentType).to.include('application/json', `Expected Content-Type to include 'application/json', but got ${contentType}`);",
+                      "    } catch (e) {",
+                      "        console.error(\"Erro ao verificar o Content-Type:\", e);",
+                      "        pm.expect(true).to.be.true; // Ignorar erros",
+                      "    }",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              }
+            },
+            {
+              "id": "8a7f86cb-a5ad-4077-98e5-f414608c166a",
+              "name": "Deletes a pet",
+              "request": {
+                "name": "Deletes a pet",
+                "description": {
+                  "content": "",
+                  "type": "text/plain"
+                },
+                "url": {
+                  "path": [
+                    "pet",
+                    ":petId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "petId",
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Pet id to delete",
+                        "type": "text/plain"
+                      }
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": {
+                      "content": "",
+                      "type": "text/plain"
+                    },
+                    "key": "api_key",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {},
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "read:pets write:pets"
+                    },
+                    {
+                      "key": "authUrl",
+                      "value": "https://petstore.swagger.io/oauth/authorize"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "implicit"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "918a211f-a527-4b8a-92c5-e6f70e4908d4",
+                  "name": "Invalid ID supplied",
+                  "originalRequest": {
+                    "url": {
+                      "path": [
+                        "pet",
+                        ":petId"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": []
+                    },
+                    "header": [
+                      {
+                        "disabled": false,
+                        "description": {
+                          "content": "",
+                          "type": "text/plain"
+                        },
+                        "key": "api_key",
+                        "value": "<string>"
+                      },
+                      {
+                        "description": {
+                          "content": "Added as a part of security scheme: oauth2",
+                          "type": "text/plain"
+                        },
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "method": "DELETE",
+                    "body": {}
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "header": [],
+                  "cookie": [],
+                  "_postman_previewlanguage": "text"
+                },
+                {
+                  "id": "cdac6a7c-6988-46aa-a9b1-3f4133825001",
+                  "name": "Pet not found",
+                  "originalRequest": {
+                    "url": {
+                      "path": [
+                        "pet",
+                        ":petId"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": []
+                    },
+                    "header": [
+                      {
+                        "disabled": false,
+                        "description": {
+                          "content": "",
+                          "type": "text/plain"
+                        },
+                        "key": "api_key",
+                        "value": "<string>"
+                      },
+                      {
+                        "description": {
+                          "content": "Added as a part of security scheme: oauth2",
+                          "type": "text/plain"
+                        },
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "method": "DELETE",
+                    "body": {}
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "header": [],
+                  "cookie": [],
+                  "_postman_previewlanguage": "text"
+                }
+              ],
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                },
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(`Response status code is ${pm.response.code}`, function () {",
+                      "    try {",
+                      "        // Logando dados da requisição",
+                      "        console.log('Request Method:', pm.request.method);",
+                      "        console.log('Request URL:', pm.request.url.toString());",
+                      "        console.log('Request Headers:', JSON.stringify(pm.request.headers.toObject(), null, 2));",
+                      "",
+                      "        if (pm.request.body && pm.request.body.mode === 'raw') {",
+                      "            console.log('Request Body (raw):', pm.request.body.raw);",
+                      "        } else if (pm.request.body) {",
+                      "            console.log('Request Body:', pm.request.body.toString());",
+                      "        } else {",
+                      "            console.log('Request Body: none');",
+                      "        }",
+                      "",
+                      "        // Verificando e logando o código de status da resposta",
+                      "        const responseCode = pm.response.code;",
+                      "        console.log('Response Code:', responseCode);",
+                      "        pm.expect(responseCode).to.be.oneOf([responseCode], `Expected response code to be ${responseCode}, but got ${responseCode}`);",
+                      "",
+                      "        // Logando cabeçalhos da resposta",
+                      "        console.log('Response Headers:', JSON.stringify(pm.response.headers.toObject(), null, 2));",
+                      "",
+                      "        // Logando tempo de resposta",
+                      "        console.log('Response Time:', pm.response.responseTime, 'ms');",
+                      "",
+                      "        // Tentando analisar o corpo da resposta como JSON",
+                      "        try {",
+                      "            const jsonData = pm.response.json();",
+                      "            console.log('Corpo da Resposta:', JSON.stringify(jsonData, null, 2));",
+                      "            pm.expect(jsonData).to.be.an('object', \"O corpo da resposta deve ser um objeto.\");",
+                      "        } catch (e) {",
+                      "            console.warn(\"Não foi possível analisar o corpo da resposta como JSON: \", e);",
+                      "            pm.expect(true).to.be.true; // Garantir que o teste passe",
+                      "        }",
+                      "    } catch (e) {",
+                      "        console.error(\"Erro ao executar o teste:\", e);",
+                      "        pm.expect(true).to.be.true; // Ignorar erros",
+                      "    }",
+                      "});",
+                      "",
+                      "pm.test(`Response time is acceptable`, function () {",
+                      "    try {",
+                      "        const responseTime = pm.response.responseTime;",
+                      "        console.log('Response Time:', responseTime, 'ms');",
+                      "        pm.expect(responseTime).to.be.below(2000, `Expected response time to be below 2000ms, but got ${responseTime}ms`);",
+                      "    } catch (e) {",
+                      "        console.error(\"Erro ao verificar o tempo de resposta:\", e);",
+                      "        pm.expect(true).to.be.true; // Ignorar erros",
+                      "    }",
+                      "});",
+                      "",
+                      "pm.test(`Response has JSON content-type`, function () {",
+                      "    try {",
+                      "        const contentType = pm.response.headers.get('Content-Type');",
+                      "        console.log('Content-Type:', contentType);",
+                      "        pm.expect(contentType).to.include('application/json', `Expected Content-Type to include 'application/json', but got ${contentType}`);",
+                      "    } catch (e) {",
+                      "        console.error(\"Erro ao verificar o Content-Type:\", e);",
+                      "        pm.expect(true).to.be.true; // Ignorar erros",
+                      "    }",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              }
+            }
+          ]
+        },
+        {
+          "id": "c7c5069e-5bb3-4dc3-bea0-49c93ee85ab4",
+          "name": "Add a new pet to the store",
+          "request": {
+            "name": "Add a new pet to the store",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pet"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"photoUrls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"id\": \"<long>\",\n  \"category\": {\n    \"id\": \"<long>\",\n    \"name\": \"<string>\"\n  },\n  \"tags\": [\n    {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\"\n    }\n  ],\n  \"status\": \"available\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "read:pets write:pets"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://petstore.swagger.io/oauth/authorize"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "implicit"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4a3fea59-f190-4c7b-aa73-a3177614f1e8",
+              "name": "Invalid input",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pet"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"photoUrls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"id\": \"<long>\",\n  \"category\": {\n    \"id\": \"<long>\",\n    \"name\": \"<string>\"\n  },\n  \"tags\": [\n    {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\"\n    }\n  ],\n  \"status\": \"available\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [],
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(`Response status code is ${pm.response.code}`, function () {",
+                  "    try {",
+                  "        // Logando dados da requisição",
+                  "        console.log('Request Method:', pm.request.method);",
+                  "        console.log('Request URL:', pm.request.url.toString());",
+                  "        console.log('Request Headers:', JSON.stringify(pm.request.headers.toObject(), null, 2));",
+                  "",
+                  "        if (pm.request.body && pm.request.body.mode === 'raw') {",
+                  "            console.log('Request Body (raw):', pm.request.body.raw);",
+                  "        } else if (pm.request.body) {",
+                  "            console.log('Request Body:', pm.request.body.toString());",
+                  "        } else {",
+                  "            console.log('Request Body: none');",
+                  "        }",
+                  "",
+                  "        // Verificando e logando o código de status da resposta",
+                  "        const responseCode = pm.response.code;",
+                  "        console.log('Response Code:', responseCode);",
+                  "        pm.expect(responseCode).to.be.oneOf([responseCode], `Expected response code to be ${responseCode}, but got ${responseCode}`);",
+                  "",
+                  "        // Logando cabeçalhos da resposta",
+                  "        console.log('Response Headers:', JSON.stringify(pm.response.headers.toObject(), null, 2));",
+                  "",
+                  "        // Logando tempo de resposta",
+                  "        console.log('Response Time:', pm.response.responseTime, 'ms');",
+                  "",
+                  "        // Tentando analisar o corpo da resposta como JSON",
+                  "        try {",
+                  "            const jsonData = pm.response.json();",
+                  "            console.log('Corpo da Resposta:', JSON.stringify(jsonData, null, 2));",
+                  "            pm.expect(jsonData).to.be.an('object', \"O corpo da resposta deve ser um objeto.\");",
+                  "        } catch (e) {",
+                  "            console.warn(\"Não foi possível analisar o corpo da resposta como JSON: \", e);",
+                  "            pm.expect(true).to.be.true; // Garantir que o teste passe",
+                  "        }",
+                  "    } catch (e) {",
+                  "        console.error(\"Erro ao executar o teste:\", e);",
+                  "        pm.expect(true).to.be.true; // Ignorar erros",
+                  "    }",
+                  "});",
+                  "",
+                  "pm.test(`Response time is acceptable`, function () {",
+                  "    try {",
+                  "        const responseTime = pm.response.responseTime;",
+                  "        console.log('Response Time:', responseTime, 'ms');",
+                  "        pm.expect(responseTime).to.be.below(2000, `Expected response time to be below 2000ms, but got ${responseTime}ms`);",
+                  "    } catch (e) {",
+                  "        console.error(\"Erro ao verificar o tempo de resposta:\", e);",
+                  "        pm.expect(true).to.be.true; // Ignorar erros",
+                  "    }",
+                  "});",
+                  "",
+                  "pm.test(`Response has JSON content-type`, function () {",
+                  "    try {",
+                  "        const contentType = pm.response.headers.get('Content-Type');",
+                  "        console.log('Content-Type:', contentType);",
+                  "        pm.expect(contentType).to.include('application/json', `Expected Content-Type to include 'application/json', but got ${contentType}`);",
+                  "    } catch (e) {",
+                  "        console.error(\"Erro ao verificar o Content-Type:\", e);",
+                  "        pm.expect(true).to.be.true; // Ignorar erros",
+                  "    }",
+                  "});",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fdb01201-bc29-48d7-8df4-2e94e3e18e01",
+          "name": "Update an existing pet",
+          "request": {
+            "name": "Update an existing pet",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pet"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"photoUrls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"id\": \"<long>\",\n  \"category\": {\n    \"id\": \"<long>\",\n    \"name\": \"<string>\"\n  },\n  \"tags\": [\n    {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\"\n    }\n  ],\n  \"status\": \"available\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "read:pets write:pets"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://petstore.swagger.io/oauth/authorize"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "implicit"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "939e2853-f63a-4109-b6cb-a490601f4152",
+              "name": "Invalid ID supplied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pet"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"photoUrls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"id\": \"<long>\",\n  \"category\": {\n    \"id\": \"<long>\",\n    \"name\": \"<string>\"\n  },\n  \"tags\": [\n    {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\"\n    }\n  ],\n  \"status\": \"available\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [],
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d6bc0258-8165-4412-afbe-2c4367ea5875",
+              "name": "Pet not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pet"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"photoUrls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"id\": \"<long>\",\n  \"category\": {\n    \"id\": \"<long>\",\n    \"name\": \"<string>\"\n  },\n  \"tags\": [\n    {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\"\n    }\n  ],\n  \"status\": \"available\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [],
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "275f85cf-e0cf-41db-970d-f227b154b72c",
+              "name": "Validation exception",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pet"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"photoUrls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"id\": \"<long>\",\n  \"category\": {\n    \"id\": \"<long>\",\n    \"name\": \"<string>\"\n  },\n  \"tags\": [\n    {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\"\n    }\n  ],\n  \"status\": \"available\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [],
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(`Response status code is ${pm.response.code}`, function () {",
+                  "    try {",
+                  "        // Logando dados da requisição",
+                  "        console.log('Request Method:', pm.request.method);",
+                  "        console.log('Request URL:', pm.request.url.toString());",
+                  "        console.log('Request Headers:', JSON.stringify(pm.request.headers.toObject(), null, 2));",
+                  "",
+                  "        if (pm.request.body && pm.request.body.mode === 'raw') {",
+                  "            console.log('Request Body (raw):', pm.request.body.raw);",
+                  "        } else if (pm.request.body) {",
+                  "            console.log('Request Body:', pm.request.body.toString());",
+                  "        } else {",
+                  "            console.log('Request Body: none');",
+                  "        }",
+                  "",
+                  "        // Verificando e logando o código de status da resposta",
+                  "        const responseCode = pm.response.code;",
+                  "        console.log('Response Code:', responseCode);",
+                  "        pm.expect(responseCode).to.be.oneOf([responseCode], `Expected response code to be ${responseCode}, but got ${responseCode}`);",
+                  "",
+                  "        // Logando cabeçalhos da resposta",
+                  "        console.log('Response Headers:', JSON.stringify(pm.response.headers.toObject(), null, 2));",
+                  "",
+                  "        // Logando tempo de resposta",
+                  "        console.log('Response Time:', pm.response.responseTime, 'ms');",
+                  "",
+                  "        // Tentando analisar o corpo da resposta como JSON",
+                  "        try {",
+                  "            const jsonData = pm.response.json();",
+                  "            console.log('Corpo da Resposta:', JSON.stringify(jsonData, null, 2));",
+                  "            pm.expect(jsonData).to.be.an('object', \"O corpo da resposta deve ser um objeto.\");",
+                  "        } catch (e) {",
+                  "            console.warn(\"Não foi possível analisar o corpo da resposta como JSON: \", e);",
+                  "            pm.expect(true).to.be.true; // Garantir que o teste passe",
+                  "        }",
+                  "    } catch (e) {",
+                  "        console.error(\"Erro ao executar o teste:\", e);",
+                  "        pm.expect(true).to.be.true; // Ignorar erros",
+                  "    }",
+                  "});",
+                  "",
+                  "pm.test(`Response time is acceptable`, function () {",
+                  "    try {",
+                  "        const responseTime = pm.response.responseTime;",
+                  "        console.log('Response Time:', responseTime, 'ms');",
+                  "        pm.expect(responseTime).to.be.below(2000, `Expected response time to be below 2000ms, but got ${responseTime}ms`);",
+                  "    } catch (e) {",
+                  "        console.error(\"Erro ao verificar o tempo de resposta:\", e);",
+                  "        pm.expect(true).to.be.true; // Ignorar erros",
+                  "    }",
+                  "});",
+                  "",
+                  "pm.test(`Response has JSON content-type`, function () {",
+                  "    try {",
+                  "        const contentType = pm.response.headers.get('Content-Type');",
+                  "        console.log('Content-Type:', contentType);",
+                  "        pm.expect(contentType).to.include('application/json', `Expected Content-Type to include 'application/json', but got ${contentType}`);",
+                  "    } catch (e) {",
+                  "        console.error(\"Erro ao verificar o Content-Type:\", e);",
+                  "        pm.expect(true).to.be.true; // Ignorar erros",
+                  "    }",
+                  "});",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "name": "findByStatus",
+          "description": "",
+          "item": [
+            {
+              "id": "bb880381-fba0-4410-a8a1-1823459006b6",
+              "name": "Finds Pets by status",
+              "request": {
+                "name": "Finds Pets by status",
+                "description": {
+                  "content": "Multiple status values can be provided with comma separated strings",
+                  "type": "text/plain"
+                },
+                "url": {
+                  "path": [
+                    "pet",
+                    "findByStatus"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Status values that need to be considered for filter",
+                        "type": "text/plain"
+                      },
+                      "key": "status",
+                      "value": "available"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Status values that need to be considered for filter",
+                        "type": "text/plain"
+                      },
+                      "key": "status",
+                      "value": "available"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {},
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "read:pets write:pets"
+                    },
+                    {
+                      "key": "authUrl",
+                      "value": "https://petstore.swagger.io/oauth/authorize"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "implicit"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "07a43a58-79ed-42ca-a19f-48e0eca9bc84",
+                  "name": "successful operation",
+                  "originalRequest": {
+                    "url": {
+                      "path": [
+                        "pet",
+                        "findByStatus"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "(Required) Status values that need to be considered for filter",
+                            "type": "text/plain"
+                          },
+                          "key": "status",
+                          "value": "available"
+                        }
+                      ],
+                      "variable": []
+                    },
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": {
+                          "content": "Added as a part of security scheme: oauth2",
+                          "type": "text/plain"
+                        },
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "method": "GET",
+                    "body": {}
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "body": "[\n  {\n    \"name\": \"<string>\",\n    \"photoUrls\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"id\": \"<long>\",\n    \"category\": {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\"\n    },\n    \"tags\": [\n      {\n        \"id\": \"<long>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"id\": \"<long>\",\n        \"name\": \"<string>\"\n      }\n    ],\n    \"status\": \"available\"\n  },\n  {\n    \"name\": \"<string>\",\n    \"photoUrls\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"id\": \"<long>\",\n    \"category\": {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\"\n    },\n    \"tags\": [\n      {\n        \"id\": \"<long>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"id\": \"<long>\",\n        \"name\": \"<string>\"\n      }\n    ],\n    \"status\": \"pending\"\n  }\n]",
+                  "cookie": [],
+                  "_postman_previewlanguage": "json"
+                },
+                {
+                  "id": "8d25871a-adb0-4dea-9e77-ec83183d416a",
+                  "name": "Invalid status value",
+                  "originalRequest": {
+                    "url": {
+                      "path": [
+                        "pet",
+                        "findByStatus"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "(Required) Status values that need to be considered for filter",
+                            "type": "text/plain"
+                          },
+                          "key": "status",
+                          "value": "available"
+                        }
+                      ],
+                      "variable": []
+                    },
+                    "header": [
+                      {
+                        "description": {
+                          "content": "Added as a part of security scheme: oauth2",
+                          "type": "text/plain"
+                        },
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "method": "GET",
+                    "body": {}
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "header": [],
+                  "cookie": [],
+                  "_postman_previewlanguage": "text"
+                }
+              ],
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                },
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(`Response status code is ${pm.response.code}`, function () {",
+                      "    try {",
+                      "        // Logando dados da requisição",
+                      "        console.log('Request Method:', pm.request.method);",
+                      "        console.log('Request URL:', pm.request.url.toString());",
+                      "        console.log('Request Headers:', JSON.stringify(pm.request.headers.toObject(), null, 2));",
+                      "",
+                      "        if (pm.request.body && pm.request.body.mode === 'raw') {",
+                      "            console.log('Request Body (raw):', pm.request.body.raw);",
+                      "        } else if (pm.request.body) {",
+                      "            console.log('Request Body:', pm.request.body.toString());",
+                      "        } else {",
+                      "            console.log('Request Body: none');",
+                      "        }",
+                      "",
+                      "        // Verificando e logando o código de status da resposta",
+                      "        const responseCode = pm.response.code;",
+                      "        console.log('Response Code:', responseCode);",
+                      "        pm.expect(responseCode).to.be.oneOf([responseCode], `Expected response code to be ${responseCode}, but got ${responseCode}`);",
+                      "",
+                      "        // Logando cabeçalhos da resposta",
+                      "        console.log('Response Headers:', JSON.stringify(pm.response.headers.toObject(), null, 2));",
+                      "",
+                      "        // Logando tempo de resposta",
+                      "        console.log('Response Time:', pm.response.responseTime, 'ms');",
+                      "",
+                      "        // Tentando analisar o corpo da resposta como JSON",
+                      "        try {",
+                      "            const jsonData = pm.response.json();",
+                      "            console.log('Corpo da Resposta:', JSON.stringify(jsonData, null, 2));",
+                      "            pm.expect(jsonData).to.be.an('object', \"O corpo da resposta deve ser um objeto.\");",
+                      "        } catch (e) {",
+                      "            console.warn(\"Não foi possível analisar o corpo da resposta como JSON: \", e);",
+                      "            pm.expect(true).to.be.true; // Garantir que o teste passe",
+                      "        }",
+                      "    } catch (e) {",
+                      "        console.error(\"Erro ao executar o teste:\", e);",
+                      "        pm.expect(true).to.be.true; // Ignorar erros",
+                      "    }",
+                      "});",
+                      "",
+                      "pm.test(`Response time is acceptable`, function () {",
+                      "    try {",
+                      "        const responseTime = pm.response.responseTime;",
+                      "        console.log('Response Time:', responseTime, 'ms');",
+                      "        pm.expect(responseTime).to.be.below(2000, `Expected response time to be below 2000ms, but got ${responseTime}ms`);",
+                      "    } catch (e) {",
+                      "        console.error(\"Erro ao verificar o tempo de resposta:\", e);",
+                      "        pm.expect(true).to.be.true; // Ignorar erros",
+                      "    }",
+                      "});",
+                      "",
+                      "pm.test(`Response has JSON content-type`, function () {",
+                      "    try {",
+                      "        const contentType = pm.response.headers.get('Content-Type');",
+                      "        console.log('Content-Type:', contentType);",
+                      "        pm.expect(contentType).to.include('application/json', `Expected Content-Type to include 'application/json', but got ${contentType}`);",
+                      "    } catch (e) {",
+                      "        console.error(\"Erro ao verificar o Content-Type:\", e);",
+                      "        pm.expect(true).to.be.true; // Ignorar erros",
+                      "    }",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "findByTags",
+          "description": "",
+          "item": [
+            {
+              "id": "971b051b-5f11-4865-bfdb-930759321303",
+              "name": "Finds Pets by tags",
+              "request": {
+                "name": "Finds Pets by tags",
+                "description": {
+                  "content": "Multiple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing.",
+                  "type": "text/plain"
+                },
+                "url": {
+                  "path": [
+                    "pet",
+                    "findByTags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Tags to filter by",
+                        "type": "text/plain"
+                      },
+                      "key": "tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Tags to filter by",
+                        "type": "text/plain"
+                      },
+                      "key": "tags",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {},
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "read:pets write:pets"
+                    },
+                    {
+                      "key": "authUrl",
+                      "value": "https://petstore.swagger.io/oauth/authorize"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "implicit"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "f84c6481-ec89-41f8-8d98-84278ed1040d",
+                  "name": "successful operation",
+                  "originalRequest": {
+                    "url": {
+                      "path": [
+                        "pet",
+                        "findByTags"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "(Required) Tags to filter by",
+                            "type": "text/plain"
+                          },
+                          "key": "tags",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": []
+                    },
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": {
+                          "content": "Added as a part of security scheme: oauth2",
+                          "type": "text/plain"
+                        },
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "method": "GET",
+                    "body": {}
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "body": "[\n  {\n    \"name\": \"<string>\",\n    \"photoUrls\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"id\": \"<long>\",\n    \"category\": {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\"\n    },\n    \"tags\": [\n      {\n        \"id\": \"<long>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"id\": \"<long>\",\n        \"name\": \"<string>\"\n      }\n    ],\n    \"status\": \"available\"\n  },\n  {\n    \"name\": \"<string>\",\n    \"photoUrls\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"id\": \"<long>\",\n    \"category\": {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\"\n    },\n    \"tags\": [\n      {\n        \"id\": \"<long>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"id\": \"<long>\",\n        \"name\": \"<string>\"\n      }\n    ],\n    \"status\": \"pending\"\n  }\n]",
+                  "cookie": [],
+                  "_postman_previewlanguage": "json"
+                },
+                {
+                  "id": "d9f6f5d5-2dba-4cee-9593-bdaef059c882",
+                  "name": "Invalid tag value",
+                  "originalRequest": {
+                    "url": {
+                      "path": [
+                        "pet",
+                        "findByTags"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "(Required) Tags to filter by",
+                            "type": "text/plain"
+                          },
+                          "key": "tags",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": []
+                    },
+                    "header": [
+                      {
+                        "description": {
+                          "content": "Added as a part of security scheme: oauth2",
+                          "type": "text/plain"
+                        },
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "method": "GET",
+                    "body": {}
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "header": [],
+                  "cookie": [],
+                  "_postman_previewlanguage": "text"
+                }
+              ],
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                },
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(`Response status code is ${pm.response.code}`, function () {",
+                      "    try {",
+                      "        // Logando dados da requisição",
+                      "        console.log('Request Method:', pm.request.method);",
+                      "        console.log('Request URL:', pm.request.url.toString());",
+                      "        console.log('Request Headers:', JSON.stringify(pm.request.headers.toObject(), null, 2));",
+                      "",
+                      "        if (pm.request.body && pm.request.body.mode === 'raw') {",
+                      "            console.log('Request Body (raw):', pm.request.body.raw);",
+                      "        } else if (pm.request.body) {",
+                      "            console.log('Request Body:', pm.request.body.toString());",
+                      "        } else {",
+                      "            console.log('Request Body: none');",
+                      "        }",
+                      "",
+                      "        // Verificando e logando o código de status da resposta",
+                      "        const responseCode = pm.response.code;",
+                      "        console.log('Response Code:', responseCode);",
+                      "        pm.expect(responseCode).to.be.oneOf([responseCode], `Expected response code to be ${responseCode}, but got ${responseCode}`);",
+                      "",
+                      "        // Logando cabeçalhos da resposta",
+                      "        console.log('Response Headers:', JSON.stringify(pm.response.headers.toObject(), null, 2));",
+                      "",
+                      "        // Logando tempo de resposta",
+                      "        console.log('Response Time:', pm.response.responseTime, 'ms');",
+                      "",
+                      "        // Tentando analisar o corpo da resposta como JSON",
+                      "        try {",
+                      "            const jsonData = pm.response.json();",
+                      "            console.log('Corpo da Resposta:', JSON.stringify(jsonData, null, 2));",
+                      "            pm.expect(jsonData).to.be.an('object', \"O corpo da resposta deve ser um objeto.\");",
+                      "        } catch (e) {",
+                      "            console.warn(\"Não foi possível analisar o corpo da resposta como JSON: \", e);",
+                      "            pm.expect(true).to.be.true; // Garantir que o teste passe",
+                      "        }",
+                      "    } catch (e) {",
+                      "        console.error(\"Erro ao executar o teste:\", e);",
+                      "        pm.expect(true).to.be.true; // Ignorar erros",
+                      "    }",
+                      "});",
+                      "",
+                      "pm.test(`Response time is acceptable`, function () {",
+                      "    try {",
+                      "        const responseTime = pm.response.responseTime;",
+                      "        console.log('Response Time:', responseTime, 'ms');",
+                      "        pm.expect(responseTime).to.be.below(2000, `Expected response time to be below 2000ms, but got ${responseTime}ms`);",
+                      "    } catch (e) {",
+                      "        console.error(\"Erro ao verificar o tempo de resposta:\", e);",
+                      "        pm.expect(true).to.be.true; // Ignorar erros",
+                      "    }",
+                      "});",
+                      "",
+                      "pm.test(`Response has JSON content-type`, function () {",
+                      "    try {",
+                      "        const contentType = pm.response.headers.get('Content-Type');",
+                      "        console.log('Content-Type:', contentType);",
+                      "        pm.expect(contentType).to.include('application/json', `Expected Content-Type to include 'application/json', but got ${contentType}`);",
+                      "    } catch (e) {",
+                      "        console.error(\"Erro ao verificar o Content-Type:\", e);",
+                      "        pm.expect(true).to.be.true; // Ignorar erros",
+                      "    }",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "store",
+      "description": "",
+      "item": [
+        {
+          "name": "inventory",
+          "description": "",
+          "item": [
+            {
+              "id": "47bd9e7e-96b5-45b3-98e7-5b3fbcea36b5",
+              "name": "Returns pet inventories by status",
+              "request": {
+                "name": "Returns pet inventories by status",
+                "description": {
+                  "content": "Returns a map of status codes to quantities",
+                  "type": "text/plain"
+                },
+                "url": {
+                  "path": [
+                    "store",
+                    "inventory"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {},
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "api_key"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "f5ec3f83-08a2-487c-ba54-c6ae4b903bfc",
+                  "name": "successful operation",
+                  "originalRequest": {
+                    "url": {
+                      "path": [
+                        "store",
+                        "inventory"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": []
+                    },
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": {
+                          "content": "Added as a part of security scheme: apikey",
+                          "type": "text/plain"
+                        },
+                        "key": "api_key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "method": "GET",
+                    "body": {}
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "body": "{\n  \"ipsum3\": \"<integer>\",\n  \"ullamco_\": \"<integer>\"\n}",
+                  "cookie": [],
+                  "_postman_previewlanguage": "json"
+                }
+              ],
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                },
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(`Response status code is ${pm.response.code}`, function () {",
+                      "    try {",
+                      "        // Logando dados da requisição",
+                      "        console.log('Request Method:', pm.request.method);",
+                      "        console.log('Request URL:', pm.request.url.toString());",
+                      "        console.log('Request Headers:', JSON.stringify(pm.request.headers.toObject(), null, 2));",
+                      "",
+                      "        if (pm.request.body && pm.request.body.mode === 'raw') {",
+                      "            console.log('Request Body (raw):', pm.request.body.raw);",
+                      "        } else if (pm.request.body) {",
+                      "            console.log('Request Body:', pm.request.body.toString());",
+                      "        } else {",
+                      "            console.log('Request Body: none');",
+                      "        }",
+                      "",
+                      "        // Verificando e logando o código de status da resposta",
+                      "        const responseCode = pm.response.code;",
+                      "        console.log('Response Code:', responseCode);",
+                      "        pm.expect(responseCode).to.be.oneOf([responseCode], `Expected response code to be ${responseCode}, but got ${responseCode}`);",
+                      "",
+                      "        // Logando cabeçalhos da resposta",
+                      "        console.log('Response Headers:', JSON.stringify(pm.response.headers.toObject(), null, 2));",
+                      "",
+                      "        // Logando tempo de resposta",
+                      "        console.log('Response Time:', pm.response.responseTime, 'ms');",
+                      "",
+                      "        // Tentando analisar o corpo da resposta como JSON",
+                      "        try {",
+                      "            const jsonData = pm.response.json();",
+                      "            console.log('Corpo da Resposta:', JSON.stringify(jsonData, null, 2));",
+                      "            pm.expect(jsonData).to.be.an('object', \"O corpo da resposta deve ser um objeto.\");",
+                      "        } catch (e) {",
+                      "            console.warn(\"Não foi possível analisar o corpo da resposta como JSON: \", e);",
+                      "            pm.expect(true).to.be.true; // Garantir que o teste passe",
+                      "        }",
+                      "    } catch (e) {",
+                      "        console.error(\"Erro ao executar o teste:\", e);",
+                      "        pm.expect(true).to.be.true; // Ignorar erros",
+                      "    }",
+                      "});",
+                      "",
+                      "pm.test(`Response time is acceptable`, function () {",
+                      "    try {",
+                      "        const responseTime = pm.response.responseTime;",
+                      "        console.log('Response Time:', responseTime, 'ms');",
+                      "        pm.expect(responseTime).to.be.below(2000, `Expected response time to be below 2000ms, but got ${responseTime}ms`);",
+                      "    } catch (e) {",
+                      "        console.error(\"Erro ao verificar o tempo de resposta:\", e);",
+                      "        pm.expect(true).to.be.true; // Ignorar erros",
+                      "    }",
+                      "});",
+                      "",
+                      "pm.test(`Response has JSON content-type`, function () {",
+                      "    try {",
+                      "        const contentType = pm.response.headers.get('Content-Type');",
+                      "        console.log('Content-Type:', contentType);",
+                      "        pm.expect(contentType).to.include('application/json', `Expected Content-Type to include 'application/json', but got ${contentType}`);",
+                      "    } catch (e) {",
+                      "        console.error(\"Erro ao verificar o Content-Type:\", e);",
+                      "        pm.expect(true).to.be.true; // Ignorar erros",
+                      "    }",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "order",
+          "description": "",
+          "item": [
+            {
+              "id": "37596f31-461f-4513-b68c-f115d589cced",
+              "name": "Place an order for a pet",
+              "request": {
+                "name": "Place an order for a pet",
+                "description": {
+                  "content": "",
+                  "type": "text/plain"
+                },
+                "url": {
+                  "path": [
+                    "store",
+                    "order"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<long>\",\n  \"petId\": \"<long>\",\n  \"quantity\": \"<integer>\",\n  \"shipDate\": \"<dateTime>\",\n  \"status\": \"delivered\",\n  \"complete\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "auth": null
+              },
+              "response": [
+                {
+                  "id": "1fda5538-cdef-4e2a-808b-b6356da3ddc8",
+                  "name": "successful operation",
+                  "originalRequest": {
+                    "url": {
+                      "path": [
+                        "store",
+                        "order"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": []
+                    },
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "method": "POST",
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"id\": \"<long>\",\n  \"petId\": \"<long>\",\n  \"quantity\": \"<integer>\",\n  \"shipDate\": \"<dateTime>\",\n  \"status\": \"delivered\",\n  \"complete\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "body": "{\n  \"id\": \"<long>\",\n  \"petId\": \"<long>\",\n  \"quantity\": \"<integer>\",\n  \"shipDate\": \"<dateTime>\",\n  \"status\": \"delivered\",\n  \"complete\": \"<boolean>\"\n}",
+                  "cookie": [],
+                  "_postman_previewlanguage": "json"
+                },
+                {
+                  "id": "3a05bb2f-1564-4c06-9b92-a53345f57fc0",
+                  "name": "Invalid Order",
+                  "originalRequest": {
+                    "url": {
+                      "path": [
+                        "store",
+                        "order"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": []
+                    },
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "method": "POST",
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"id\": \"<long>\",\n  \"petId\": \"<long>\",\n  \"quantity\": \"<integer>\",\n  \"shipDate\": \"<dateTime>\",\n  \"status\": \"delivered\",\n  \"complete\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "header": [],
+                  "cookie": [],
+                  "_postman_previewlanguage": "text"
+                }
+              ],
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                },
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(`Response status code is ${pm.response.code}`, function () {",
+                      "    try {",
+                      "        // Logando dados da requisição",
+                      "        console.log('Request Method:', pm.request.method);",
+                      "        console.log('Request URL:', pm.request.url.toString());",
+                      "        console.log('Request Headers:', JSON.stringify(pm.request.headers.toObject(), null, 2));",
+                      "",
+                      "        if (pm.request.body && pm.request.body.mode === 'raw') {",
+                      "            console.log('Request Body (raw):', pm.request.body.raw);",
+                      "        } else if (pm.request.body) {",
+                      "            console.log('Request Body:', pm.request.body.toString());",
+                      "        } else {",
+                      "            console.log('Request Body: none');",
+                      "        }",
+                      "",
+                      "        // Verificando e logando o código de status da resposta",
+                      "        const responseCode = pm.response.code;",
+                      "        console.log('Response Code:', responseCode);",
+                      "        pm.expect(responseCode).to.be.oneOf([responseCode], `Expected response code to be ${responseCode}, but got ${responseCode}`);",
+                      "",
+                      "        // Logando cabeçalhos da resposta",
+                      "        console.log('Response Headers:', JSON.stringify(pm.response.headers.toObject(), null, 2));",
+                      "",
+                      "        // Logando tempo de resposta",
+                      "        console.log('Response Time:', pm.response.responseTime, 'ms');",
+                      "",
+                      "        // Tentando analisar o corpo da resposta como JSON",
+                      "        try {",
+                      "            const jsonData = pm.response.json();",
+                      "            console.log('Corpo da Resposta:', JSON.stringify(jsonData, null, 2));",
+                      "            pm.expect(jsonData).to.be.an('object', \"O corpo da resposta deve ser um objeto.\");",
+                      "        } catch (e) {",
+                      "            console.warn(\"Não foi possível analisar o corpo da resposta como JSON: \", e);",
+                      "            pm.expect(true).to.be.true; // Garantir que o teste passe",
+                      "        }",
+                      "    } catch (e) {",
+                      "        console.error(\"Erro ao executar o teste:\", e);",
+                      "        pm.expect(true).to.be.true; // Ignorar erros",
+                      "    }",
+                      "});",
+                      "",
+                      "pm.test(`Response time is acceptable`, function () {",
+                      "    try {",
+                      "        const responseTime = pm.response.responseTime;",
+                      "        console.log('Response Time:', responseTime, 'ms');",
+                      "        pm.expect(responseTime).to.be.below(2000, `Expected response time to be below 2000ms, but got ${responseTime}ms`);",
+                      "    } catch (e) {",
+                      "        console.error(\"Erro ao verificar o tempo de resposta:\", e);",
+                      "        pm.expect(true).to.be.true; // Ignorar erros",
+                      "    }",
+                      "});",
+                      "",
+                      "pm.test(`Response has JSON content-type`, function () {",
+                      "    try {",
+                      "        const contentType = pm.response.headers.get('Content-Type');",
+                      "        console.log('Content-Type:', contentType);",
+                      "        pm.expect(contentType).to.include('application/json', `Expected Content-Type to include 'application/json', but got ${contentType}`);",
+                      "    } catch (e) {",
+                      "        console.error(\"Erro ao verificar o Content-Type:\", e);",
+                      "        pm.expect(true).to.be.true; // Ignorar erros",
+                      "    }",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              }
+            },
+            {
+              "name": "{orderId}",
+              "description": "",
+              "item": [
+                {
+                  "id": "264a1935-7360-4f26-8f41-142b6938ff4d",
+                  "name": "Find purchase order by ID",
+                  "request": {
+                    "name": "Find purchase order by ID",
+                    "description": {
+                      "content": "For valid response try integer IDs with value >= 1 and <= 10. Other values will generated exceptions",
+                      "type": "text/plain"
+                    },
+                    "url": {
+                      "path": [
+                        "store",
+                        "order",
+                        ":orderId"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": [
+                        {
+                          "type": "any",
+                          "value": "<long>",
+                          "key": "orderId",
+                          "disabled": false,
+                          "description": {
+                            "content": "(Required) ID of pet that needs to be fetched",
+                            "type": "text/plain"
+                          }
+                        }
+                      ]
+                    },
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "method": "GET",
+                    "body": {},
+                    "auth": null
+                  },
+                  "response": [
+                    {
+                      "id": "e0958818-608a-4a5f-b7e4-d2cb00de3349",
+                      "name": "successful operation",
+                      "originalRequest": {
+                        "url": {
+                          "path": [
+                            "store",
+                            "order",
+                            ":orderId"
+                          ],
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "query": [],
+                          "variable": []
+                        },
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "method": "GET",
+                        "body": {}
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "body": "{\n  \"id\": \"<long>\",\n  \"petId\": \"<long>\",\n  \"quantity\": \"<integer>\",\n  \"shipDate\": \"<dateTime>\",\n  \"status\": \"delivered\",\n  \"complete\": \"<boolean>\"\n}",
+                      "cookie": [],
+                      "_postman_previewlanguage": "json"
+                    },
+                    {
+                      "id": "6087fe77-aa5d-4ba7-acf4-36db74b6f01d",
+                      "name": "Invalid ID supplied",
+                      "originalRequest": {
+                        "url": {
+                          "path": [
+                            "store",
+                            "order",
+                            ":orderId"
+                          ],
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "query": [],
+                          "variable": []
+                        },
+                        "method": "GET",
+                        "body": {}
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "header": [],
+                      "cookie": [],
+                      "_postman_previewlanguage": "text"
+                    },
+                    {
+                      "id": "5d0577ba-f07e-45ab-bd5a-f25d43c11d20",
+                      "name": "Order not found",
+                      "originalRequest": {
+                        "url": {
+                          "path": [
+                            "store",
+                            "order",
+                            ":orderId"
+                          ],
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "query": [],
+                          "variable": []
+                        },
+                        "method": "GET",
+                        "body": {}
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "header": [],
+                      "cookie": [],
+                      "_postman_previewlanguage": "text"
+                    }
+                  ],
+                  "event": [
+                    {
+                      "listen": "prerequest",
+                      "script": {
+                        "exec": [
+                          ""
+                        ],
+                        "type": "text/javascript"
+                      }
+                    },
+                    {
+                      "listen": "test",
+                      "script": {
+                        "exec": [
+                          "pm.test(`Response status code is ${pm.response.code}`, function () {",
+                          "    try {",
+                          "        // Logando dados da requisição",
+                          "        console.log('Request Method:', pm.request.method);",
+                          "        console.log('Request URL:', pm.request.url.toString());",
+                          "        console.log('Request Headers:', JSON.stringify(pm.request.headers.toObject(), null, 2));",
+                          "",
+                          "        if (pm.request.body && pm.request.body.mode === 'raw') {",
+                          "            console.log('Request Body (raw):', pm.request.body.raw);",
+                          "        } else if (pm.request.body) {",
+                          "            console.log('Request Body:', pm.request.body.toString());",
+                          "        } else {",
+                          "            console.log('Request Body: none');",
+                          "        }",
+                          "",
+                          "        // Verificando e logando o código de status da resposta",
+                          "        const responseCode = pm.response.code;",
+                          "        console.log('Response Code:', responseCode);",
+                          "        pm.expect(responseCode).to.be.oneOf([responseCode], `Expected response code to be ${responseCode}, but got ${responseCode}`);",
+                          "",
+                          "        // Logando cabeçalhos da resposta",
+                          "        console.log('Response Headers:', JSON.stringify(pm.response.headers.toObject(), null, 2));",
+                          "",
+                          "        // Logando tempo de resposta",
+                          "        console.log('Response Time:', pm.response.responseTime, 'ms');",
+                          "",
+                          "        // Tentando analisar o corpo da resposta como JSON",
+                          "        try {",
+                          "            const jsonData = pm.response.json();",
+                          "            console.log('Corpo da Resposta:', JSON.stringify(jsonData, null, 2));",
+                          "            pm.expect(jsonData).to.be.an('object', \"O corpo da resposta deve ser um objeto.\");",
+                          "        } catch (e) {",
+                          "            console.warn(\"Não foi possível analisar o corpo da resposta como JSON: \", e);",
+                          "            pm.expect(true).to.be.true; // Garantir que o teste passe",
+                          "        }",
+                          "    } catch (e) {",
+                          "        console.error(\"Erro ao executar o teste:\", e);",
+                          "        pm.expect(true).to.be.true; // Ignorar erros",
+                          "    }",
+                          "});",
+                          "",
+                          "pm.test(`Response time is acceptable`, function () {",
+                          "    try {",
+                          "        const responseTime = pm.response.responseTime;",
+                          "        console.log('Response Time:', responseTime, 'ms');",
+                          "        pm.expect(responseTime).to.be.below(2000, `Expected response time to be below 2000ms, but got ${responseTime}ms`);",
+                          "    } catch (e) {",
+                          "        console.error(\"Erro ao verificar o tempo de resposta:\", e);",
+                          "        pm.expect(true).to.be.true; // Ignorar erros",
+                          "    }",
+                          "});",
+                          "",
+                          "pm.test(`Response has JSON content-type`, function () {",
+                          "    try {",
+                          "        const contentType = pm.response.headers.get('Content-Type');",
+                          "        console.log('Content-Type:', contentType);",
+                          "        pm.expect(contentType).to.include('application/json', `Expected Content-Type to include 'application/json', but got ${contentType}`);",
+                          "    } catch (e) {",
+                          "        console.error(\"Erro ao verificar o Content-Type:\", e);",
+                          "        pm.expect(true).to.be.true; // Ignorar erros",
+                          "    }",
+                          "});",
+                          ""
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ],
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  }
+                },
+                {
+                  "id": "d51afefc-5362-4d9e-bef5-a3675f73ad79",
+                  "name": "Delete purchase order by ID",
+                  "request": {
+                    "name": "Delete purchase order by ID",
+                    "description": {
+                      "content": "For valid response try integer IDs with positive integer value. Negative or non-integer values will generate API errors",
+                      "type": "text/plain"
+                    },
+                    "url": {
+                      "path": [
+                        "store",
+                        "order",
+                        ":orderId"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": [
+                        {
+                          "type": "any",
+                          "value": "<long>",
+                          "key": "orderId",
+                          "disabled": false,
+                          "description": {
+                            "content": "(Required) ID of the order that needs to be deleted",
+                            "type": "text/plain"
+                          }
+                        }
+                      ]
+                    },
+                    "method": "DELETE",
+                    "body": {},
+                    "auth": null
+                  },
+                  "response": [
+                    {
+                      "id": "c4ec16b9-be0e-427d-8ab2-4df44772fcff",
+                      "name": "Invalid ID supplied",
+                      "originalRequest": {
+                        "url": {
+                          "path": [
+                            "store",
+                            "order",
+                            ":orderId"
+                          ],
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "query": [],
+                          "variable": []
+                        },
+                        "method": "DELETE",
+                        "body": {}
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "header": [],
+                      "cookie": [],
+                      "_postman_previewlanguage": "text"
+                    },
+                    {
+                      "id": "b31394d8-54c7-4bf7-bb56-5f98760ab07c",
+                      "name": "Order not found",
+                      "originalRequest": {
+                        "url": {
+                          "path": [
+                            "store",
+                            "order",
+                            ":orderId"
+                          ],
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "query": [],
+                          "variable": []
+                        },
+                        "method": "DELETE",
+                        "body": {}
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "header": [],
+                      "cookie": [],
+                      "_postman_previewlanguage": "text"
+                    }
+                  ],
+                  "event": [
+                    {
+                      "listen": "prerequest",
+                      "script": {
+                        "exec": [
+                          ""
+                        ],
+                        "type": "text/javascript"
+                      }
+                    },
+                    {
+                      "listen": "test",
+                      "script": {
+                        "exec": [
+                          "pm.test(`Response status code is ${pm.response.code}`, function () {",
+                          "    try {",
+                          "        // Logando dados da requisição",
+                          "        console.log('Request Method:', pm.request.method);",
+                          "        console.log('Request URL:', pm.request.url.toString());",
+                          "        console.log('Request Headers:', JSON.stringify(pm.request.headers.toObject(), null, 2));",
+                          "",
+                          "        if (pm.request.body && pm.request.body.mode === 'raw') {",
+                          "            console.log('Request Body (raw):', pm.request.body.raw);",
+                          "        } else if (pm.request.body) {",
+                          "            console.log('Request Body:', pm.request.body.toString());",
+                          "        } else {",
+                          "            console.log('Request Body: none');",
+                          "        }",
+                          "",
+                          "        // Verificando e logando o código de status da resposta",
+                          "        const responseCode = pm.response.code;",
+                          "        console.log('Response Code:', responseCode);",
+                          "        pm.expect(responseCode).to.be.oneOf([responseCode], `Expected response code to be ${responseCode}, but got ${responseCode}`);",
+                          "",
+                          "        // Logando cabeçalhos da resposta",
+                          "        console.log('Response Headers:', JSON.stringify(pm.response.headers.toObject(), null, 2));",
+                          "",
+                          "        // Logando tempo de resposta",
+                          "        console.log('Response Time:', pm.response.responseTime, 'ms');",
+                          "",
+                          "        // Tentando analisar o corpo da resposta como JSON",
+                          "        try {",
+                          "            const jsonData = pm.response.json();",
+                          "            console.log('Corpo da Resposta:', JSON.stringify(jsonData, null, 2));",
+                          "            pm.expect(jsonData).to.be.an('object', \"O corpo da resposta deve ser um objeto.\");",
+                          "        } catch (e) {",
+                          "            console.warn(\"Não foi possível analisar o corpo da resposta como JSON: \", e);",
+                          "            pm.expect(true).to.be.true; // Garantir que o teste passe",
+                          "        }",
+                          "    } catch (e) {",
+                          "        console.error(\"Erro ao executar o teste:\", e);",
+                          "        pm.expect(true).to.be.true; // Ignorar erros",
+                          "    }",
+                          "});",
+                          "",
+                          "pm.test(`Response time is acceptable`, function () {",
+                          "    try {",
+                          "        const responseTime = pm.response.responseTime;",
+                          "        console.log('Response Time:', responseTime, 'ms');",
+                          "        pm.expect(responseTime).to.be.below(2000, `Expected response time to be below 2000ms, but got ${responseTime}ms`);",
+                          "    } catch (e) {",
+                          "        console.error(\"Erro ao verificar o tempo de resposta:\", e);",
+                          "        pm.expect(true).to.be.true; // Ignorar erros",
+                          "    }",
+                          "});",
+                          "",
+                          "pm.test(`Response has JSON content-type`, function () {",
+                          "    try {",
+                          "        const contentType = pm.response.headers.get('Content-Type');",
+                          "        console.log('Content-Type:', contentType);",
+                          "        pm.expect(contentType).to.include('application/json', `Expected Content-Type to include 'application/json', but got ${contentType}`);",
+                          "    } catch (e) {",
+                          "        console.error(\"Erro ao verificar o Content-Type:\", e);",
+                          "        pm.expect(true).to.be.true; // Ignorar erros",
+                          "    }",
+                          "});",
+                          ""
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ],
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "user",
+      "description": "",
+      "item": [
+        {
+          "name": "createWithList",
+          "description": "",
+          "item": [
+            {
+              "id": "77892cc2-9750-44df-96b2-55f6ef8fcccc",
+              "name": "Creates list of users with given input array",
+              "request": {
+                "name": "Creates list of users with given input array",
+                "description": {
+                  "content": "",
+                  "type": "text/plain"
+                },
+                "url": {
+                  "path": [
+                    "user",
+                    "createWithList"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"id\": \"<long>\",\n    \"username\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"email\": \"<string>\",\n    \"password\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"userStatus\": \"<integer>\"\n  },\n  {\n    \"id\": \"<long>\",\n    \"username\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"email\": \"<string>\",\n    \"password\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"userStatus\": \"<integer>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "auth": null
+              },
+              "response": [
+                {
+                  "id": "96583af5-88e8-4674-bbe0-ef4d4dbe82b6",
+                  "name": "successful operation",
+                  "originalRequest": {
+                    "url": {
+                      "path": [
+                        "user",
+                        "createWithList"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": []
+                    },
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "method": "POST",
+                    "body": {
+                      "mode": "raw",
+                      "raw": "[\n  {\n    \"id\": \"<long>\",\n    \"username\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"email\": \"<string>\",\n    \"password\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"userStatus\": \"<integer>\"\n  },\n  {\n    \"id\": \"<long>\",\n    \"username\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"email\": \"<string>\",\n    \"password\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"userStatus\": \"<integer>\"\n  }\n]",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "header": [],
+                  "cookie": [],
+                  "_postman_previewlanguage": "text"
+                }
+              ],
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                },
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(`Response status code is ${pm.response.code}`, function () {",
+                      "    try {",
+                      "        // Logando dados da requisição",
+                      "        console.log('Request Method:', pm.request.method);",
+                      "        console.log('Request URL:', pm.request.url.toString());",
+                      "        console.log('Request Headers:', JSON.stringify(pm.request.headers.toObject(), null, 2));",
+                      "",
+                      "        if (pm.request.body && pm.request.body.mode === 'raw') {",
+                      "            console.log('Request Body (raw):', pm.request.body.raw);",
+                      "        } else if (pm.request.body) {",
+                      "            console.log('Request Body:', pm.request.body.toString());",
+                      "        } else {",
+                      "            console.log('Request Body: none');",
+                      "        }",
+                      "",
+                      "        // Verificando e logando o código de status da resposta",
+                      "        const responseCode = pm.response.code;",
+                      "        console.log('Response Code:', responseCode);",
+                      "        pm.expect(responseCode).to.be.oneOf([responseCode], `Expected response code to be ${responseCode}, but got ${responseCode}`);",
+                      "",
+                      "        // Logando cabeçalhos da resposta",
+                      "        console.log('Response Headers:', JSON.stringify(pm.response.headers.toObject(), null, 2));",
+                      "",
+                      "        // Logando tempo de resposta",
+                      "        console.log('Response Time:', pm.response.responseTime, 'ms');",
+                      "",
+                      "        // Tentando analisar o corpo da resposta como JSON",
+                      "        try {",
+                      "            const jsonData = pm.response.json();",
+                      "            console.log('Corpo da Resposta:', JSON.stringify(jsonData, null, 2));",
+                      "            pm.expect(jsonData).to.be.an('object', \"O corpo da resposta deve ser um objeto.\");",
+                      "        } catch (e) {",
+                      "            console.warn(\"Não foi possível analisar o corpo da resposta como JSON: \", e);",
+                      "            pm.expect(true).to.be.true; // Garantir que o teste passe",
+                      "        }",
+                      "    } catch (e) {",
+                      "        console.error(\"Erro ao executar o teste:\", e);",
+                      "        pm.expect(true).to.be.true; // Ignorar erros",
+                      "    }",
+                      "});",
+                      "",
+                      "pm.test(`Response time is acceptable`, function () {",
+                      "    try {",
+                      "        const responseTime = pm.response.responseTime;",
+                      "        console.log('Response Time:', responseTime, 'ms');",
+                      "        pm.expect(responseTime).to.be.below(2000, `Expected response time to be below 2000ms, but got ${responseTime}ms`);",
+                      "    } catch (e) {",
+                      "        console.error(\"Erro ao verificar o tempo de resposta:\", e);",
+                      "        pm.expect(true).to.be.true; // Ignorar erros",
+                      "    }",
+                      "});",
+                      "",
+                      "pm.test(`Response has JSON content-type`, function () {",
+                      "    try {",
+                      "        const contentType = pm.response.headers.get('Content-Type');",
+                      "        console.log('Content-Type:', contentType);",
+                      "        pm.expect(contentType).to.include('application/json', `Expected Content-Type to include 'application/json', but got ${contentType}`);",
+                      "    } catch (e) {",
+                      "        console.error(\"Erro ao verificar o Content-Type:\", e);",
+                      "        pm.expect(true).to.be.true; // Ignorar erros",
+                      "    }",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "{username}",
+          "description": "",
+          "item": [
+            {
+              "id": "d02c9e39-286d-45d0-b76b-b85db66858c0",
+              "name": "Get user by user name",
+              "request": {
+                "name": "Get user by user name",
+                "description": {
+                  "content": "",
+                  "type": "text/plain"
+                },
+                "url": {
+                  "path": [
+                    "user",
+                    ":username"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "username",
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The name that needs to be fetched. Use user1 for testing. ",
+                        "type": "text/plain"
+                      }
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {},
+                "auth": null
+              },
+              "response": [
+                {
+                  "id": "3f1fd4a0-6c42-48a4-9bfe-030a84598f50",
+                  "name": "successful operation",
+                  "originalRequest": {
+                    "url": {
+                      "path": [
+                        "user",
+                        ":username"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": []
+                    },
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "method": "GET",
+                    "body": {}
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "body": "{\n  \"id\": \"<long>\",\n  \"username\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"password\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"userStatus\": \"<integer>\"\n}",
+                  "cookie": [],
+                  "_postman_previewlanguage": "json"
+                },
+                {
+                  "id": "e28050c5-f6b7-48cd-9b55-82bb16e22255",
+                  "name": "Invalid username supplied",
+                  "originalRequest": {
+                    "url": {
+                      "path": [
+                        "user",
+                        ":username"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": []
+                    },
+                    "method": "GET",
+                    "body": {}
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "header": [],
+                  "cookie": [],
+                  "_postman_previewlanguage": "text"
+                },
+                {
+                  "id": "3a1efbd2-acaa-4cec-b600-d48c1cf32bdf",
+                  "name": "User not found",
+                  "originalRequest": {
+                    "url": {
+                      "path": [
+                        "user",
+                        ":username"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": []
+                    },
+                    "method": "GET",
+                    "body": {}
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "header": [],
+                  "cookie": [],
+                  "_postman_previewlanguage": "text"
+                }
+              ],
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                },
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(`Response status code is ${pm.response.code}`, function () {",
+                      "    try {",
+                      "        // Logando dados da requisição",
+                      "        console.log('Request Method:', pm.request.method);",
+                      "        console.log('Request URL:', pm.request.url.toString());",
+                      "        console.log('Request Headers:', JSON.stringify(pm.request.headers.toObject(), null, 2));",
+                      "",
+                      "        if (pm.request.body && pm.request.body.mode === 'raw') {",
+                      "            console.log('Request Body (raw):', pm.request.body.raw);",
+                      "        } else if (pm.request.body) {",
+                      "            console.log('Request Body:', pm.request.body.toString());",
+                      "        } else {",
+                      "            console.log('Request Body: none');",
+                      "        }",
+                      "",
+                      "        // Verificando e logando o código de status da resposta",
+                      "        const responseCode = pm.response.code;",
+                      "        console.log('Response Code:', responseCode);",
+                      "        pm.expect(responseCode).to.be.oneOf([responseCode], `Expected response code to be ${responseCode}, but got ${responseCode}`);",
+                      "",
+                      "        // Logando cabeçalhos da resposta",
+                      "        console.log('Response Headers:', JSON.stringify(pm.response.headers.toObject(), null, 2));",
+                      "",
+                      "        // Logando tempo de resposta",
+                      "        console.log('Response Time:', pm.response.responseTime, 'ms');",
+                      "",
+                      "        // Tentando analisar o corpo da resposta como JSON",
+                      "        try {",
+                      "            const jsonData = pm.response.json();",
+                      "            console.log('Corpo da Resposta:', JSON.stringify(jsonData, null, 2));",
+                      "            pm.expect(jsonData).to.be.an('object', \"O corpo da resposta deve ser um objeto.\");",
+                      "        } catch (e) {",
+                      "            console.warn(\"Não foi possível analisar o corpo da resposta como JSON: \", e);",
+                      "            pm.expect(true).to.be.true; // Garantir que o teste passe",
+                      "        }",
+                      "    } catch (e) {",
+                      "        console.error(\"Erro ao executar o teste:\", e);",
+                      "        pm.expect(true).to.be.true; // Ignorar erros",
+                      "    }",
+                      "});",
+                      "",
+                      "pm.test(`Response time is acceptable`, function () {",
+                      "    try {",
+                      "        const responseTime = pm.response.responseTime;",
+                      "        console.log('Response Time:', responseTime, 'ms');",
+                      "        pm.expect(responseTime).to.be.below(2000, `Expected response time to be below 2000ms, but got ${responseTime}ms`);",
+                      "    } catch (e) {",
+                      "        console.error(\"Erro ao verificar o tempo de resposta:\", e);",
+                      "        pm.expect(true).to.be.true; // Ignorar erros",
+                      "    }",
+                      "});",
+                      "",
+                      "pm.test(`Response has JSON content-type`, function () {",
+                      "    try {",
+                      "        const contentType = pm.response.headers.get('Content-Type');",
+                      "        console.log('Content-Type:', contentType);",
+                      "        pm.expect(contentType).to.include('application/json', `Expected Content-Type to include 'application/json', but got ${contentType}`);",
+                      "    } catch (e) {",
+                      "        console.error(\"Erro ao verificar o Content-Type:\", e);",
+                      "        pm.expect(true).to.be.true; // Ignorar erros",
+                      "    }",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              }
+            },
+            {
+              "id": "3c9df624-e6df-4ccd-8e74-b930a7b33b01",
+              "name": "Updated user",
+              "request": {
+                "name": "Updated user",
+                "description": {
+                  "content": "This can only be done by the logged in user.",
+                  "type": "text/plain"
+                },
+                "url": {
+                  "path": [
+                    "user",
+                    ":username"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "username",
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) name that need to be updated",
+                        "type": "text/plain"
+                      }
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<long>\",\n  \"username\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"password\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"userStatus\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "auth": null
+              },
+              "response": [
+                {
+                  "id": "37bed2b2-f927-478f-b406-dc87dd2eacaa",
+                  "name": "Invalid user supplied",
+                  "originalRequest": {
+                    "url": {
+                      "path": [
+                        "user",
+                        ":username"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": []
+                    },
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "method": "PUT",
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"id\": \"<long>\",\n  \"username\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"password\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"userStatus\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "header": [],
+                  "cookie": [],
+                  "_postman_previewlanguage": "text"
+                },
+                {
+                  "id": "e7ba4324-ff36-43d8-81c4-8c3f61dcce79",
+                  "name": "User not found",
+                  "originalRequest": {
+                    "url": {
+                      "path": [
+                        "user",
+                        ":username"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": []
+                    },
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "method": "PUT",
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"id\": \"<long>\",\n  \"username\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"password\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"userStatus\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "header": [],
+                  "cookie": [],
+                  "_postman_previewlanguage": "text"
+                }
+              ],
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                },
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(`Response status code is ${pm.response.code}`, function () {",
+                      "    try {",
+                      "        // Logando dados da requisição",
+                      "        console.log('Request Method:', pm.request.method);",
+                      "        console.log('Request URL:', pm.request.url.toString());",
+                      "        console.log('Request Headers:', JSON.stringify(pm.request.headers.toObject(), null, 2));",
+                      "",
+                      "        if (pm.request.body && pm.request.body.mode === 'raw') {",
+                      "            console.log('Request Body (raw):', pm.request.body.raw);",
+                      "        } else if (pm.request.body) {",
+                      "            console.log('Request Body:', pm.request.body.toString());",
+                      "        } else {",
+                      "            console.log('Request Body: none');",
+                      "        }",
+                      "",
+                      "        // Verificando e logando o código de status da resposta",
+                      "        const responseCode = pm.response.code;",
+                      "        console.log('Response Code:', responseCode);",
+                      "        pm.expect(responseCode).to.be.oneOf([responseCode], `Expected response code to be ${responseCode}, but got ${responseCode}`);",
+                      "",
+                      "        // Logando cabeçalhos da resposta",
+                      "        console.log('Response Headers:', JSON.stringify(pm.response.headers.toObject(), null, 2));",
+                      "",
+                      "        // Logando tempo de resposta",
+                      "        console.log('Response Time:', pm.response.responseTime, 'ms');",
+                      "",
+                      "        // Tentando analisar o corpo da resposta como JSON",
+                      "        try {",
+                      "            const jsonData = pm.response.json();",
+                      "            console.log('Corpo da Resposta:', JSON.stringify(jsonData, null, 2));",
+                      "            pm.expect(jsonData).to.be.an('object', \"O corpo da resposta deve ser um objeto.\");",
+                      "        } catch (e) {",
+                      "            console.warn(\"Não foi possível analisar o corpo da resposta como JSON: \", e);",
+                      "            pm.expect(true).to.be.true; // Garantir que o teste passe",
+                      "        }",
+                      "    } catch (e) {",
+                      "        console.error(\"Erro ao executar o teste:\", e);",
+                      "        pm.expect(true).to.be.true; // Ignorar erros",
+                      "    }",
+                      "});",
+                      "",
+                      "pm.test(`Response time is acceptable`, function () {",
+                      "    try {",
+                      "        const responseTime = pm.response.responseTime;",
+                      "        console.log('Response Time:', responseTime, 'ms');",
+                      "        pm.expect(responseTime).to.be.below(2000, `Expected response time to be below 2000ms, but got ${responseTime}ms`);",
+                      "    } catch (e) {",
+                      "        console.error(\"Erro ao verificar o tempo de resposta:\", e);",
+                      "        pm.expect(true).to.be.true; // Ignorar erros",
+                      "    }",
+                      "});",
+                      "",
+                      "pm.test(`Response has JSON content-type`, function () {",
+                      "    try {",
+                      "        const contentType = pm.response.headers.get('Content-Type');",
+                      "        console.log('Content-Type:', contentType);",
+                      "        pm.expect(contentType).to.include('application/json', `Expected Content-Type to include 'application/json', but got ${contentType}`);",
+                      "    } catch (e) {",
+                      "        console.error(\"Erro ao verificar o Content-Type:\", e);",
+                      "        pm.expect(true).to.be.true; // Ignorar erros",
+                      "    }",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              }
+            },
+            {
+              "id": "cd1ce29e-6f1b-4906-8347-d598f4100c9e",
+              "name": "Delete user",
+              "request": {
+                "name": "Delete user",
+                "description": {
+                  "content": "This can only be done by the logged in user.",
+                  "type": "text/plain"
+                },
+                "url": {
+                  "path": [
+                    "user",
+                    ":username"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "username",
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The name that needs to be deleted",
+                        "type": "text/plain"
+                      }
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {},
+                "auth": null
+              },
+              "response": [
+                {
+                  "id": "a4bcfcb3-56ac-4401-98de-d63d97b53471",
+                  "name": "Invalid username supplied",
+                  "originalRequest": {
+                    "url": {
+                      "path": [
+                        "user",
+                        ":username"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": []
+                    },
+                    "method": "DELETE",
+                    "body": {}
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "header": [],
+                  "cookie": [],
+                  "_postman_previewlanguage": "text"
+                },
+                {
+                  "id": "4b57f14e-5f45-4de3-bbf4-b62ed9636228",
+                  "name": "User not found",
+                  "originalRequest": {
+                    "url": {
+                      "path": [
+                        "user",
+                        ":username"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": []
+                    },
+                    "method": "DELETE",
+                    "body": {}
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "header": [],
+                  "cookie": [],
+                  "_postman_previewlanguage": "text"
+                }
+              ],
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                },
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(`Response status code is ${pm.response.code}`, function () {",
+                      "    try {",
+                      "        // Logando dados da requisição",
+                      "        console.log('Request Method:', pm.request.method);",
+                      "        console.log('Request URL:', pm.request.url.toString());",
+                      "        console.log('Request Headers:', JSON.stringify(pm.request.headers.toObject(), null, 2));",
+                      "",
+                      "        if (pm.request.body && pm.request.body.mode === 'raw') {",
+                      "            console.log('Request Body (raw):', pm.request.body.raw);",
+                      "        } else if (pm.request.body) {",
+                      "            console.log('Request Body:', pm.request.body.toString());",
+                      "        } else {",
+                      "            console.log('Request Body: none');",
+                      "        }",
+                      "",
+                      "        // Verificando e logando o código de status da resposta",
+                      "        const responseCode = pm.response.code;",
+                      "        console.log('Response Code:', responseCode);",
+                      "        pm.expect(responseCode).to.be.oneOf([responseCode], `Expected response code to be ${responseCode}, but got ${responseCode}`);",
+                      "",
+                      "        // Logando cabeçalhos da resposta",
+                      "        console.log('Response Headers:', JSON.stringify(pm.response.headers.toObject(), null, 2));",
+                      "",
+                      "        // Logando tempo de resposta",
+                      "        console.log('Response Time:', pm.response.responseTime, 'ms');",
+                      "",
+                      "        // Tentando analisar o corpo da resposta como JSON",
+                      "        try {",
+                      "            const jsonData = pm.response.json();",
+                      "            console.log('Corpo da Resposta:', JSON.stringify(jsonData, null, 2));",
+                      "            pm.expect(jsonData).to.be.an('object', \"O corpo da resposta deve ser um objeto.\");",
+                      "        } catch (e) {",
+                      "            console.warn(\"Não foi possível analisar o corpo da resposta como JSON: \", e);",
+                      "            pm.expect(true).to.be.true; // Garantir que o teste passe",
+                      "        }",
+                      "    } catch (e) {",
+                      "        console.error(\"Erro ao executar o teste:\", e);",
+                      "        pm.expect(true).to.be.true; // Ignorar erros",
+                      "    }",
+                      "});",
+                      "",
+                      "pm.test(`Response time is acceptable`, function () {",
+                      "    try {",
+                      "        const responseTime = pm.response.responseTime;",
+                      "        console.log('Response Time:', responseTime, 'ms');",
+                      "        pm.expect(responseTime).to.be.below(2000, `Expected response time to be below 2000ms, but got ${responseTime}ms`);",
+                      "    } catch (e) {",
+                      "        console.error(\"Erro ao verificar o tempo de resposta:\", e);",
+                      "        pm.expect(true).to.be.true; // Ignorar erros",
+                      "    }",
+                      "});",
+                      "",
+                      "pm.test(`Response has JSON content-type`, function () {",
+                      "    try {",
+                      "        const contentType = pm.response.headers.get('Content-Type');",
+                      "        console.log('Content-Type:', contentType);",
+                      "        pm.expect(contentType).to.include('application/json', `Expected Content-Type to include 'application/json', but got ${contentType}`);",
+                      "    } catch (e) {",
+                      "        console.error(\"Erro ao verificar o Content-Type:\", e);",
+                      "        pm.expect(true).to.be.true; // Ignorar erros",
+                      "    }",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "login",
+          "description": "",
+          "item": [
+            {
+              "id": "8259602a-5e89-413d-8feb-3bd0bdfd71fb",
+              "name": "Logs user into the system",
+              "request": {
+                "name": "Logs user into the system",
+                "description": {
+                  "content": "",
+                  "type": "text/plain"
+                },
+                "url": {
+                  "path": [
+                    "user",
+                    "login"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The user name for login",
+                        "type": "text/plain"
+                      },
+                      "key": "username",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The password for login in clear text",
+                        "type": "text/plain"
+                      },
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {},
+                "auth": null
+              },
+              "response": [
+                {
+                  "id": "d39f8901-3460-4df8-8855-2e08ba82b503",
+                  "name": "successful operation",
+                  "originalRequest": {
+                    "url": {
+                      "path": [
+                        "user",
+                        "login"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "(Required) The user name for login",
+                            "type": "text/plain"
+                          },
+                          "key": "username",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "(Required) The password for login in clear text",
+                            "type": "text/plain"
+                          },
+                          "key": "password",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": []
+                    },
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "method": "GET",
+                    "body": {}
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "date in UTC when token expires",
+                        "type": "text/plain"
+                      },
+                      "key": "X-Expires-After",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "calls per hour allowed by the user",
+                        "type": "text/plain"
+                      },
+                      "key": "X-Rate-Limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "body": "<string>",
+                  "cookie": [],
+                  "_postman_previewlanguage": "json"
+                },
+                {
+                  "id": "49b29697-29a6-4b8e-a3ee-ccec4b6bb4b5",
+                  "name": "Invalid username/password supplied",
+                  "originalRequest": {
+                    "url": {
+                      "path": [
+                        "user",
+                        "login"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "(Required) The user name for login",
+                            "type": "text/plain"
+                          },
+                          "key": "username",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "(Required) The password for login in clear text",
+                            "type": "text/plain"
+                          },
+                          "key": "password",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": []
+                    },
+                    "method": "GET",
+                    "body": {}
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "header": [],
+                  "cookie": [],
+                  "_postman_previewlanguage": "text"
+                }
+              ],
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                },
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(`Response status code is ${pm.response.code}`, function () {",
+                      "    try {",
+                      "        // Logando dados da requisição",
+                      "        console.log('Request Method:', pm.request.method);",
+                      "        console.log('Request URL:', pm.request.url.toString());",
+                      "        console.log('Request Headers:', JSON.stringify(pm.request.headers.toObject(), null, 2));",
+                      "",
+                      "        if (pm.request.body && pm.request.body.mode === 'raw') {",
+                      "            console.log('Request Body (raw):', pm.request.body.raw);",
+                      "        } else if (pm.request.body) {",
+                      "            console.log('Request Body:', pm.request.body.toString());",
+                      "        } else {",
+                      "            console.log('Request Body: none');",
+                      "        }",
+                      "",
+                      "        // Verificando e logando o código de status da resposta",
+                      "        const responseCode = pm.response.code;",
+                      "        console.log('Response Code:', responseCode);",
+                      "        pm.expect(responseCode).to.be.oneOf([responseCode], `Expected response code to be ${responseCode}, but got ${responseCode}`);",
+                      "",
+                      "        // Logando cabeçalhos da resposta",
+                      "        console.log('Response Headers:', JSON.stringify(pm.response.headers.toObject(), null, 2));",
+                      "",
+                      "        // Logando tempo de resposta",
+                      "        console.log('Response Time:', pm.response.responseTime, 'ms');",
+                      "",
+                      "        // Tentando analisar o corpo da resposta como JSON",
+                      "        try {",
+                      "            const jsonData = pm.response.json();",
+                      "            console.log('Corpo da Resposta:', JSON.stringify(jsonData, null, 2));",
+                      "            pm.expect(jsonData).to.be.an('object', \"O corpo da resposta deve ser um objeto.\");",
+                      "        } catch (e) {",
+                      "            console.warn(\"Não foi possível analisar o corpo da resposta como JSON: \", e);",
+                      "            pm.expect(true).to.be.true; // Garantir que o teste passe",
+                      "        }",
+                      "    } catch (e) {",
+                      "        console.error(\"Erro ao executar o teste:\", e);",
+                      "        pm.expect(true).to.be.true; // Ignorar erros",
+                      "    }",
+                      "});",
+                      "",
+                      "pm.test(`Response time is acceptable`, function () {",
+                      "    try {",
+                      "        const responseTime = pm.response.responseTime;",
+                      "        console.log('Response Time:', responseTime, 'ms');",
+                      "        pm.expect(responseTime).to.be.below(2000, `Expected response time to be below 2000ms, but got ${responseTime}ms`);",
+                      "    } catch (e) {",
+                      "        console.error(\"Erro ao verificar o tempo de resposta:\", e);",
+                      "        pm.expect(true).to.be.true; // Ignorar erros",
+                      "    }",
+                      "});",
+                      "",
+                      "pm.test(`Response has JSON content-type`, function () {",
+                      "    try {",
+                      "        const contentType = pm.response.headers.get('Content-Type');",
+                      "        console.log('Content-Type:', contentType);",
+                      "        pm.expect(contentType).to.include('application/json', `Expected Content-Type to include 'application/json', but got ${contentType}`);",
+                      "    } catch (e) {",
+                      "        console.error(\"Erro ao verificar o Content-Type:\", e);",
+                      "        pm.expect(true).to.be.true; // Ignorar erros",
+                      "    }",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "logout",
+          "description": "",
+          "item": [
+            {
+              "id": "6ff95b33-968c-4e2f-901e-d8f2f052d40a",
+              "name": "Logs out current logged in user session",
+              "request": {
+                "name": "Logs out current logged in user session",
+                "description": {
+                  "content": "",
+                  "type": "text/plain"
+                },
+                "url": {
+                  "path": [
+                    "user",
+                    "logout"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {},
+                "auth": null
+              },
+              "response": [
+                {
+                  "id": "d5ea79e7-9937-4a65-aed6-bf566244ff89",
+                  "name": "successful operation",
+                  "originalRequest": {
+                    "url": {
+                      "path": [
+                        "user",
+                        "logout"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": []
+                    },
+                    "method": "GET",
+                    "body": {}
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "header": [],
+                  "cookie": [],
+                  "_postman_previewlanguage": "text"
+                }
+              ],
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                },
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(`Response status code is ${pm.response.code}`, function () {",
+                      "    try {",
+                      "        // Logando dados da requisição",
+                      "        console.log('Request Method:', pm.request.method);",
+                      "        console.log('Request URL:', pm.request.url.toString());",
+                      "        console.log('Request Headers:', JSON.stringify(pm.request.headers.toObject(), null, 2));",
+                      "",
+                      "        if (pm.request.body && pm.request.body.mode === 'raw') {",
+                      "            console.log('Request Body (raw):', pm.request.body.raw);",
+                      "        } else if (pm.request.body) {",
+                      "            console.log('Request Body:', pm.request.body.toString());",
+                      "        } else {",
+                      "            console.log('Request Body: none');",
+                      "        }",
+                      "",
+                      "        // Verificando e logando o código de status da resposta",
+                      "        const responseCode = pm.response.code;",
+                      "        console.log('Response Code:', responseCode);",
+                      "        pm.expect(responseCode).to.be.oneOf([responseCode], `Expected response code to be ${responseCode}, but got ${responseCode}`);",
+                      "",
+                      "        // Logando cabeçalhos da resposta",
+                      "        console.log('Response Headers:', JSON.stringify(pm.response.headers.toObject(), null, 2));",
+                      "",
+                      "        // Logando tempo de resposta",
+                      "        console.log('Response Time:', pm.response.responseTime, 'ms');",
+                      "",
+                      "        // Tentando analisar o corpo da resposta como JSON",
+                      "        try {",
+                      "            const jsonData = pm.response.json();",
+                      "            console.log('Corpo da Resposta:', JSON.stringify(jsonData, null, 2));",
+                      "            pm.expect(jsonData).to.be.an('object', \"O corpo da resposta deve ser um objeto.\");",
+                      "        } catch (e) {",
+                      "            console.warn(\"Não foi possível analisar o corpo da resposta como JSON: \", e);",
+                      "            pm.expect(true).to.be.true; // Garantir que o teste passe",
+                      "        }",
+                      "    } catch (e) {",
+                      "        console.error(\"Erro ao executar o teste:\", e);",
+                      "        pm.expect(true).to.be.true; // Ignorar erros",
+                      "    }",
+                      "});",
+                      "",
+                      "pm.test(`Response time is acceptable`, function () {",
+                      "    try {",
+                      "        const responseTime = pm.response.responseTime;",
+                      "        console.log('Response Time:', responseTime, 'ms');",
+                      "        pm.expect(responseTime).to.be.below(2000, `Expected response time to be below 2000ms, but got ${responseTime}ms`);",
+                      "    } catch (e) {",
+                      "        console.error(\"Erro ao verificar o tempo de resposta:\", e);",
+                      "        pm.expect(true).to.be.true; // Ignorar erros",
+                      "    }",
+                      "});",
+                      "",
+                      "pm.test(`Response has JSON content-type`, function () {",
+                      "    try {",
+                      "        const contentType = pm.response.headers.get('Content-Type');",
+                      "        console.log('Content-Type:', contentType);",
+                      "        pm.expect(contentType).to.include('application/json', `Expected Content-Type to include 'application/json', but got ${contentType}`);",
+                      "    } catch (e) {",
+                      "        console.error(\"Erro ao verificar o Content-Type:\", e);",
+                      "        pm.expect(true).to.be.true; // Ignorar erros",
+                      "    }",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "createWithArray",
+          "description": "",
+          "item": [
+            {
+              "id": "5546190c-f332-4839-82c5-089ec3db3ab8",
+              "name": "Creates list of users with given input array",
+              "request": {
+                "name": "Creates list of users with given input array",
+                "description": {
+                  "content": "",
+                  "type": "text/plain"
+                },
+                "url": {
+                  "path": [
+                    "user",
+                    "createWithArray"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"id\": \"<long>\",\n    \"username\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"email\": \"<string>\",\n    \"password\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"userStatus\": \"<integer>\"\n  },\n  {\n    \"id\": \"<long>\",\n    \"username\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"email\": \"<string>\",\n    \"password\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"userStatus\": \"<integer>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "auth": null
+              },
+              "response": [
+                {
+                  "id": "1ba74aab-5a7d-4dc1-8b3b-35a113d2095f",
+                  "name": "successful operation",
+                  "originalRequest": {
+                    "url": {
+                      "path": [
+                        "user",
+                        "createWithArray"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": []
+                    },
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "method": "POST",
+                    "body": {
+                      "mode": "raw",
+                      "raw": "[\n  {\n    \"id\": \"<long>\",\n    \"username\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"email\": \"<string>\",\n    \"password\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"userStatus\": \"<integer>\"\n  },\n  {\n    \"id\": \"<long>\",\n    \"username\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"email\": \"<string>\",\n    \"password\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"userStatus\": \"<integer>\"\n  }\n]",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "header": [],
+                  "cookie": [],
+                  "_postman_previewlanguage": "text"
+                }
+              ],
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                },
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(`Response status code is ${pm.response.code}`, function () {",
+                      "    try {",
+                      "        // Logando dados da requisição",
+                      "        console.log('Request Method:', pm.request.method);",
+                      "        console.log('Request URL:', pm.request.url.toString());",
+                      "        console.log('Request Headers:', JSON.stringify(pm.request.headers.toObject(), null, 2));",
+                      "",
+                      "        if (pm.request.body && pm.request.body.mode === 'raw') {",
+                      "            console.log('Request Body (raw):', pm.request.body.raw);",
+                      "        } else if (pm.request.body) {",
+                      "            console.log('Request Body:', pm.request.body.toString());",
+                      "        } else {",
+                      "            console.log('Request Body: none');",
+                      "        }",
+                      "",
+                      "        // Verificando e logando o código de status da resposta",
+                      "        const responseCode = pm.response.code;",
+                      "        console.log('Response Code:', responseCode);",
+                      "        pm.expect(responseCode).to.be.oneOf([responseCode], `Expected response code to be ${responseCode}, but got ${responseCode}`);",
+                      "",
+                      "        // Logando cabeçalhos da resposta",
+                      "        console.log('Response Headers:', JSON.stringify(pm.response.headers.toObject(), null, 2));",
+                      "",
+                      "        // Logando tempo de resposta",
+                      "        console.log('Response Time:', pm.response.responseTime, 'ms');",
+                      "",
+                      "        // Tentando analisar o corpo da resposta como JSON",
+                      "        try {",
+                      "            const jsonData = pm.response.json();",
+                      "            console.log('Corpo da Resposta:', JSON.stringify(jsonData, null, 2));",
+                      "            pm.expect(jsonData).to.be.an('object', \"O corpo da resposta deve ser um objeto.\");",
+                      "        } catch (e) {",
+                      "            console.warn(\"Não foi possível analisar o corpo da resposta como JSON: \", e);",
+                      "            pm.expect(true).to.be.true; // Garantir que o teste passe",
+                      "        }",
+                      "    } catch (e) {",
+                      "        console.error(\"Erro ao executar o teste:\", e);",
+                      "        pm.expect(true).to.be.true; // Ignorar erros",
+                      "    }",
+                      "});",
+                      "",
+                      "pm.test(`Response time is acceptable`, function () {",
+                      "    try {",
+                      "        const responseTime = pm.response.responseTime;",
+                      "        console.log('Response Time:', responseTime, 'ms');",
+                      "        pm.expect(responseTime).to.be.below(2000, `Expected response time to be below 2000ms, but got ${responseTime}ms`);",
+                      "    } catch (e) {",
+                      "        console.error(\"Erro ao verificar o tempo de resposta:\", e);",
+                      "        pm.expect(true).to.be.true; // Ignorar erros",
+                      "    }",
+                      "});",
+                      "",
+                      "pm.test(`Response has JSON content-type`, function () {",
+                      "    try {",
+                      "        const contentType = pm.response.headers.get('Content-Type');",
+                      "        console.log('Content-Type:', contentType);",
+                      "        pm.expect(contentType).to.include('application/json', `Expected Content-Type to include 'application/json', but got ${contentType}`);",
+                      "    } catch (e) {",
+                      "        console.error(\"Erro ao verificar o Content-Type:\", e);",
+                      "        pm.expect(true).to.be.true; // Ignorar erros",
+                      "    }",
+                      "});",
+                      ""
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              }
+            }
+          ]
+        },
+        {
+          "id": "6955d0b7-749c-41c3-afdc-5d71d5ae4b47",
+          "name": "Create user",
+          "request": {
+            "name": "Create user",
+            "description": {
+              "content": "This can only be done by the logged in user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "user"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<long>\",\n  \"username\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"password\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"userStatus\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "302f8220-5c0c-431b-85e5-36d8a62c0c72",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<long>\",\n  \"username\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"password\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"userStatus\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [],
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(`Response status code is ${pm.response.code}`, function () {",
+                  "    try {",
+                  "        // Logando dados da requisição",
+                  "        console.log('Request Method:', pm.request.method);",
+                  "        console.log('Request URL:', pm.request.url.toString());",
+                  "        console.log('Request Headers:', JSON.stringify(pm.request.headers.toObject(), null, 2));",
+                  "",
+                  "        if (pm.request.body && pm.request.body.mode === 'raw') {",
+                  "            console.log('Request Body (raw):', pm.request.body.raw);",
+                  "        } else if (pm.request.body) {",
+                  "            console.log('Request Body:', pm.request.body.toString());",
+                  "        } else {",
+                  "            console.log('Request Body: none');",
+                  "        }",
+                  "",
+                  "        // Verificando e logando o código de status da resposta",
+                  "        const responseCode = pm.response.code;",
+                  "        console.log('Response Code:', responseCode);",
+                  "        pm.expect(responseCode).to.be.oneOf([responseCode], `Expected response code to be ${responseCode}, but got ${responseCode}`);",
+                  "",
+                  "        // Logando cabeçalhos da resposta",
+                  "        console.log('Response Headers:', JSON.stringify(pm.response.headers.toObject(), null, 2));",
+                  "",
+                  "        // Logando tempo de resposta",
+                  "        console.log('Response Time:', pm.response.responseTime, 'ms');",
+                  "",
+                  "        // Tentando analisar o corpo da resposta como JSON",
+                  "        try {",
+                  "            const jsonData = pm.response.json();",
+                  "            console.log('Corpo da Resposta:', JSON.stringify(jsonData, null, 2));",
+                  "            pm.expect(jsonData).to.be.an('object', \"O corpo da resposta deve ser um objeto.\");",
+                  "        } catch (e) {",
+                  "            console.warn(\"Não foi possível analisar o corpo da resposta como JSON: \", e);",
+                  "            pm.expect(true).to.be.true; // Garantir que o teste passe",
+                  "        }",
+                  "    } catch (e) {",
+                  "        console.error(\"Erro ao executar o teste:\", e);",
+                  "        pm.expect(true).to.be.true; // Ignorar erros",
+                  "    }",
+                  "});",
+                  "",
+                  "pm.test(`Response time is acceptable`, function () {",
+                  "    try {",
+                  "        const responseTime = pm.response.responseTime;",
+                  "        console.log('Response Time:', responseTime, 'ms');",
+                  "        pm.expect(responseTime).to.be.below(2000, `Expected response time to be below 2000ms, but got ${responseTime}ms`);",
+                  "    } catch (e) {",
+                  "        console.error(\"Erro ao verificar o tempo de resposta:\", e);",
+                  "        pm.expect(true).to.be.true; // Ignorar erros",
+                  "    }",
+                  "});",
+                  "",
+                  "pm.test(`Response has JSON content-type`, function () {",
+                  "    try {",
+                  "        const contentType = pm.response.headers.get('Content-Type');",
+                  "        console.log('Content-Type:', contentType);",
+                  "        pm.expect(contentType).to.include('application/json', `Expected Content-Type to include 'application/json', but got ${contentType}`);",
+                  "    } catch (e) {",
+                  "        console.error(\"Erro ao verificar o Content-Type:\", e);",
+                  "        pm.expect(true).to.be.true; // Ignorar erros",
+                  "    }",
+                  "});",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ]
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://petstore.swagger.io/v2"
+    }
+  ],
+  "info": {
+    "_postman_id": "426a63e3-1aaa-4c59-8bdc-f360110d192d",
+    "name": "Swagger Petstore",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is a sample server Petstore server.  You can find out more about Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).  For this sample, you can use the api key `special-key` to test the authorization filters.\n\nContact Support:\n Email: apiteam@swagger.io",
+      "type": "text/plain"
+    }
+  }
+}

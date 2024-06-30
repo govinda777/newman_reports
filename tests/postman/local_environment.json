@@ -1,0 +1,18 @@
+{
+  "id": "local-environment",
+  "name": "Local Environment",
+  "values": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:45610",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "tiger_token",
+      "value": "BearerYourTokenHere",
+      "type": "default",
+      "enabled": true
+    }
+  ]
+}
