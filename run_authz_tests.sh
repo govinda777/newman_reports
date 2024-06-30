@@ -50,7 +50,7 @@ cat > $ENV_FILE <<EOL
   "values": [
     {
       "key": "baseUrl",
-      "value": "http://localhost:45610",
+      "value": "https://petstore.swagger.io",
       "type": "default",
       "enabled": true
     },
@@ -83,7 +83,7 @@ echo "Scripts injetados com sucesso no arquivo '$COLLECTION_FILE'."
 echo "Executando testes com Newman..."
 npx newman run "$COLLECTION_FILE" \
     -e $ENV_FILE \
-    --env-var baseUrl="http://localhost:45610" \
+    --env-var baseUrl="https://petstore.swagger.io" \
     --env-var tiger_token="$TIGER_TOKEN" \
     --reporters cli,htmlextra,junit,json \
     --reporter-cli-show-timestamps \
